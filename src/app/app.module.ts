@@ -11,6 +11,9 @@ import {UserListComponent} from './main-admin/user-list/user-list.component';
 import {SurveyListComponent} from './main-admin/survey-list/survey-list.component';
 import {LoginComponent} from './login/login.component';
 import {AppRoutingModule} from './app-routing.module';
+import {AddSectionComponent} from './shared/modal/add-section/add-section.component';
+import {AddQuestionComponent} from './shared/modal/add-question/add-question.component';
+import {DeleteComponent} from './shared/modal/delete/delete.component';
 
 @NgModule({
     declarations: [
@@ -20,6 +23,14 @@ import {AppRoutingModule} from './app-routing.module';
         MainUserComponent,
         UserListComponent,
         SurveyListComponent,
+        AddSectionComponent,
+        AddQuestionComponent,
+        DeleteComponent,
+    ],
+    entryComponents: [
+        AddSectionComponent,
+        AddQuestionComponent,
+        DeleteComponent
     ],
     imports: [
         BrowserModule,

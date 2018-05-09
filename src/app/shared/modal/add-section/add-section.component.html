@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Add New Section</h1>
+<div mat-dialog-content>
+  <p>Type name of new section</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="name">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="closeClick()">Cancel</button>
+  <button mat-button (click)="submitClick()">Submit</button>
+</div>

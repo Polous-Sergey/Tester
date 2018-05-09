@@ -1,0 +1,61 @@
+.surveyBlock {
+  background-color: #f9f9f9;
+  overflow: hidden;
+  height: 100%;
+
+  .side-nav {
+    background-color: #f9f9f9;
+  }
+  .side-nav-heder {
+    border-bottom: 1px solid #d8d8d8;
+    width: 400px;
+    text-align: center;
+  }
+
+  .not-active-item {
+    border-right: solid 2px #f9f9f9;
+  }
+  .active-item {
+    border-right: solid 2px #001041;
+  }
+
+  .block-item {
+    padding: 5px 0 5px 0;
+    border-bottom: solid 1px #f2f1f1;
+  }
+
+  .icons {
+    md-icon {
+      min-height: 18px;
+      min-width: 18px;
+      height: 18px;
+      width: 18px;
+    }
+  }
+
+  .add-section {
+    color: #001041;
+  }
+
+  .hidden-icon {
+    display: none;
+    margin-right: 10px;
+
+  }
+
+  .block-item:hover {
+    background: #DDDDDD;
+    transition: .4s;
+    .hidden-icon {
+      display: flex;
+    }
+  }
+
+  mat-sidenav-content {
+    height: 700px;
+    .section-header {
+      display: inline-flex;
+      justify-content: space-between;
+    }
+  }
+}

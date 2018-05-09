@@ -1,3 +1,42 @@
-<p>
-  survey-list works!
-</p>
+<mat-sidenav-container class="surveyBlock">
+    <mat-sidenav #sidenav mode="side">
+        <div class="side-nav-heder">
+            <h4>Sections</h4>
+        </div>
+
+        <div class="add-section">
+            <p class="block-item" (click)="openAddSectionDialog()">+ Add section</p>
+        </div>
+
+        <div class="block-container">
+            <div *ngFor="let item of items" (click)="setActiveSection(item)" class="not-active-item">
+                <div class="block-item">
+                    <div>
+                        {{item.name}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+
+        <mat-grid-list cols="12" rowHeight="2:1">
+            <mat-grid-tile [colspan]="1">
+                <button mat-button (click)="sidenav.toggle()">sidenav.toggle()</button>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="10">
+                <div class="section-header">
+                    <h2>Section name</h2>
+                    <button mat-button>Add Question</button>
+                    <button mat-button>Edit</button>
+                </div>
+
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="1"></mat-grid-tile>
+        </mat-grid-list>
+
+
+    </mat-sidenav-content>
+</mat-sidenav-container>

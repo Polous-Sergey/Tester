@@ -22,20 +22,95 @@
 
     <mat-sidenav-content>
 
-        <mat-grid-list cols="12" rowHeight="2:1">
-            <mat-grid-tile [colspan]="1">
-                <button mat-button (click)="sidenav.toggle()">sidenav.toggle()</button>
-            </mat-grid-tile>
-            <mat-grid-tile [colspan]="10">
-                <div class="section-header">
-                    <h2>Section name</h2>
+        <div fxLayout="row"
+             fxLayoutWrap fxLayoutGap="0.5%"
+             fxLayoutAlign=" center">
+
+            <div fxFlex="10%" fxLayoutAlign="center none">
+                <button mat-icon-button (click)="sidenav.toggle()">
+                    <mat-icon aria-label="Example icon-button with a heart icon">menu</mat-icon>
+                </button>
+            </div>
+
+            <div fxFlex="80%" fxLayoutAlign="space-between center">
+                <h2>Section name</h2>
+
+                <div>
                     <button mat-button>Add Question</button>
                     <button mat-button>Edit</button>
                 </div>
 
-            </mat-grid-tile>
-            <mat-grid-tile [colspan]="1"></mat-grid-tile>
-        </mat-grid-list>
+            </div>
+
+            <div fxFlex="10%"></div>
+
+
+        </div>
+
+        <div fxLayout="column">
+
+            <div fxLayout="row"
+                 fxLayoutAlign="center center"
+                 *ngFor="let question of items[0].questions let index = index">
+
+                <mat-card fxFlex="80%"
+                          fxLayoutAlign="space-between center">
+
+                    <div fxLayout="row"
+                         fxFlex="100%"
+                         fxLayoutAlign="center center">
+
+                        <div fxFlex="10%" fxLayoutAlign="center center">
+                            <mat-card-subtitle>№{{index + 1}}</mat-card-subtitle>
+                        </div>
+
+                        <div fxFlex="90%" fxLayoutAlign="space-between center">
+                            <p>
+                                {{question.name}}
+                            </p>
+
+                            <div>
+                                <button mat-icon-button>
+                                    <mat-icon aria-label="Edit">edit</mat-icon>
+                                </button>
+
+                                <button mat-icon-button>
+                                    <mat-icon aria-label="Delete">delete</mat-icon>
+                                </button>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </mat-card>
+
+            </div>
+
+
+        </div>
+        <!--<mat-card>Simple card</mat-card>-->
+
+        <!--<div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%"-->
+        <!--fxLayoutAlign="center">-->
+        <!--<div fxFlex="20%">-->
+        <!--<img mat-card-image class="img"-->
+        <!--src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/8V46UZCS0V.jpg">-->
+        <!--</div>-->
+        <!--<div fxFlex="20%">-->
+        <!--<img mat-card-image class="img"-->
+        <!--src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/LTLE4QGRVQ.jpg">-->
+        <!--</div>-->
+        <!--<div fxFlex="20%">-->
+        <!--<img mat-card-image class="img"-->
+        <!--src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/R926LU1YEA.jpg">-->
+        <!--</div>-->
+        <!--<div fxFlex="20%">-->
+        <!--<img mat-card-image class="img"-->
+        <!--src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/U9PP3KXXY2.jpg">-->
+        <!--</div>-->
+        <!--</div>-->
 
 
     </mat-sidenav-content>

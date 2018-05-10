@@ -1,9 +1,11 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 import {AppComponent} from './app.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {FormsModule} from '@angular/forms';
 import {MaterialModule} from './shared/material/material.module';
 import {MainAdminComponent} from './main-admin/main-admin.component';
 import {MainUserComponent} from './main-user/main-user.component';
@@ -36,8 +38,9 @@ import {DeleteComponent} from './shared/modal/delete/delete.component';
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
+        FlexLayoutModule,
         FormsModule,
-        MaterialModule,
+        MaterialModule
     ],
     providers: [],
     bootstrap: [AppComponent]

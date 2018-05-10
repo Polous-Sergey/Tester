@@ -12,7 +12,20 @@ export class SurveyListComponent implements OnInit {
     items: Section[] = [
         {
             name: 'first',
-            questions: [],
+            questions: [
+                {
+                    name: 'Simple test question texy for example',
+                    answers: []
+                },
+                {
+                    name: 'Simple test question texy for example',
+                    answers: []
+                },
+                {
+                    name: 'Simple test question texy for example',
+                    answers: []
+                }
+            ],
         },
         {
             name: 'second',

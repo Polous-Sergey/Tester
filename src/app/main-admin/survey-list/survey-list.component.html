@@ -9,7 +9,7 @@
         </div>
 
         <div class="block-container">
-            <div *ngFor="let item of items" (click)="setActiveSection(item)" class="not-active-item">
+            <div *ngFor="let item of items let index = index" (click)="setActiveSection(item, index)" class="not-active-item">
                 <div class="block-item">
                     <div>
                         {{item.name}}
@@ -33,10 +33,10 @@
             </div>
 
             <div fxFlex="80%" fxLayoutAlign="space-between center">
-                <h2>Section name</h2>
+                <h2>{{activeSection.name}}</h2>
 
                 <div>
-                    <button mat-button>Add Question</button>
+                    <button mat-button (click)="openAddQuestionDialog()">Add Question</button>
                     <button mat-button>Edit</button>
                 </div>
 
@@ -51,7 +51,7 @@
 
             <div fxLayout="row"
                  fxLayoutAlign="center center"
-                 *ngFor="let question of items[0].questions let index = index">
+                 *ngFor="let question of activeSection.questions let index = index">
 
                 <mat-card fxFlex="80%"
                           fxLayoutAlign="space-between center">
@@ -71,7 +71,7 @@
 
                             <div>
                                 <button mat-icon-button>
-                                    <mat-icon aria-label="Edit">edit</mat-icon>
+                                    <mat-icon aria-label="Edit" (click)="openAddQuestionDialog(question, index)">edit</mat-icon>
                                 </button>
 
                                 <button mat-icon-button>

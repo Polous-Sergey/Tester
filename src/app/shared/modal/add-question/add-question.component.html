@@ -1,3 +1,20 @@
-<p>
-  add-question works!
-</p>
+<h1 mat-dialog-title>Add New Question</h1>
+<div mat-dialog-content>
+  <p>Type text for new question</p>
+  <mat-form-field>
+    <input matInput  placeholder="Text" [(ngModel)]="name">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select required [(ngModel)]="type">
+      <mat-option value="radio">Radio button</mat-option>
+      <mat-option value="checkbox">Checkbox</mat-option>
+    </mat-select>
+    <mat-label>Type of question</mat-label>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="closeClick()">Cancel</button>
+  <button mat-button (click)="submitClick()">Submit</button>
+</div>
+
+

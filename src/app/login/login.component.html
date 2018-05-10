@@ -1,1 +1,9 @@
-Login
+<div>
+    {{number}}
+</div>
+
+<mat-form-field>
+    <input matInput placeholder="Type the number" type="number" required #input>
+</mat-form-field>
+
+<button mat-button (click)="change(input.value)">Change</button>

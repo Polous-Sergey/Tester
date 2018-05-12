@@ -8,16 +8,36 @@
     <div fxFlex="80%">
         <h2>{{curentSection.name}}</h2>
         <mat-card
-                *ngFor="let question of curentSection.questions let index = index"
+                *ngFor="let question of curentSection.questions let indexQuestion = index"
                 style="margin-top: 10px">
-            <mat-radio-group [(ngModel)]="userAnswers[index]">
-                <mat-radio-button class="example-radio-button" *ngFor="let answer of question.answers" [value]="answer.name">
-                    {{answer.name}}
-                </mat-radio-button>
-            </mat-radio-group>
+            <label>{{question.name}}: </label>
+            <div *ngIf="question.type === 'radio'">
 
+                <mat-radio-group [(ngModel)]="userAnswers[indexQuestion]" class="example-radio-group">
+                    <mat-radio-button class="example-radio-button"
+                                      *ngFor="let answer of question.answers let answerIndex = index"
+                                      [value]="answerIndex">
+                        {{answer.name}}
+                    </mat-radio-button>
+                </mat-radio-group>
+
+            </div>
+
+            <div *ngIf="question.type === 'checkbox'">
+
+                <div class="example-radio-group">
+                    <mat-checkbox class="example-radio-button"
+                                  *ngFor="let answer of question.answers let answerIndex = index"
+                                  [(ngModel)]="userAnswers[indexQuestion][answerIndex]">
+                        {{answer.name}}
+                    </mat-checkbox>
+                </div>
+
+            </div>
         </mat-card>
-    </div>
 
+        <button mat-raised-button color="primary" (click)="next()">Primary</button>
+
+    </div>
 
 </div>

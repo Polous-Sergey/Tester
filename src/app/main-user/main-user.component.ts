@@ -14,12 +14,38 @@ export class MainUserComponent implements OnInit {
                 {
                     name: 'Simple test question texy for example',
                     type: 'radio',
-                    answers: []
+                    answers: [
+                        {
+                            name: 'answer1',
+                            isTrue: true
+                        },
+                        {
+                            name: 'answer2',
+                            isTrue: false
+                        },
+                        {
+                            name: 'answer13',
+                            isTrue: false
+                        }
+                    ]
                 },
                 {
                     name: 'Simple test question texy for example',
-                    type: 'radio',
-                    answers: []
+                    type: 'checkbox',
+                    answers: [
+                        {
+                            name: 'answer1',
+                            isTrue: true
+                        },
+                        {
+                            name: 'answer2',
+                            isTrue: false
+                        },
+                        {
+                            name: 'answer13',
+                            isTrue: false
+                        }
+                    ]
                 },
                 {
                     name: 'Simple test question texy for example',
@@ -46,6 +72,16 @@ export class MainUserComponent implements OnInit {
 
     ngOnInit() {
         this.curentSection = this.items[0];
+
+        this.curentSection.questions.forEach((question, index) => {
+            if (question.type === 'checkbox') {
+                this.userAnswers[index] = [];
+            }
+        });
+    }
+
+    next() {
+        console.log(this.userAnswers);
     }
 
 }

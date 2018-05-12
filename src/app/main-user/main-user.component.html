@@ -2,5 +2,22 @@
     <span>
         Tester
     </span>
-  <!--<mat-icon class="example-icon">verified_user</mat-icon>-->
 </mat-toolbar>
+<div fxLayout="row"
+     fxLayoutAlign="center center">
+    <div fxFlex="80%">
+        <h2>{{curentSection.name}}</h2>
+        <mat-card
+                *ngFor="let question of curentSection.questions let index = index"
+                style="margin-top: 10px">
+            <mat-radio-group [(ngModel)]="userAnswers[index]">
+                <mat-radio-button class="example-radio-button" *ngFor="let answer of question.answers" [value]="answer.name">
+                    {{answer.name}}
+                </mat-radio-button>
+            </mat-radio-group>
+
+        </mat-card>
+    </div>
+
+
+</div>

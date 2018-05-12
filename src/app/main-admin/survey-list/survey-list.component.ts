@@ -71,7 +71,7 @@ export class SurveyListComponent implements OnInit {
 
     openAddQuestionDialog(question?: Question, index?: number): void {
         const confiq: any = {
-            width: '350px',
+            width: '1000px',
         };
         if (question) {
             confiq.data = question;
@@ -80,18 +80,19 @@ export class SurveyListComponent implements OnInit {
         const dialogRef = this.dialog.open(AddQuestionComponent, confiq);
 
         dialogRef.afterClosed().subscribe(result => {
+            console.log(result)
             if (result) {
                 if (index || index === 0) {
                     this.items[this.activeSectionIndex].questions[index] = {
                         name: result.name,
                         type: result.type,
-                        answers: []
+                        answers: result.answers
                     };
                 } else {
                     this.items[this.activeSectionIndex].questions.push({
                         name: result.name,
                         type: result.type,
-                        answers: []
+                        answers: result.answers
                     });
                 }
 

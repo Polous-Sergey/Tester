@@ -1,10 +1,10 @@
 <h1 mat-dialog-title>Add New Question</h1>
 <div mat-dialog-content>
   <p>Type text for new question</p>
-  <mat-form-field>
+  <mat-form-field class="width-100">
     <input matInput  placeholder="Text" [(ngModel)]="name">
   </mat-form-field>
-  <mat-form-field>
+  <mat-form-field class="width-100">
     <mat-select required [(ngModel)]="type">
       <mat-option value="radio">Radio button</mat-option>
       <mat-option value="checkbox">Checkbox</mat-option>

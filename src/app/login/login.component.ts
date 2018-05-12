@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     }
 
     login() {
-        if(this.user.name !== '' && this.user.surname !== '' && this.user.email !== '') {
+        if (this.user.name !== '' && this.user.surname !== '' && this.user.email !== '') {
             this.router.navigate(['/admin/user']);
         }
     }

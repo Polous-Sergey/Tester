@@ -6,7 +6,7 @@
         <li><a routerLink="/admin/user"  routerLinkActive="active">User managment</a></li>
         <li><a routerLink="/admin/survey"  routerLinkActive="active">Survey management</a></li>
     </ul>
-  <mat-icon class="example-icon">verified_user</mat-icon>
+  <mat-icon class="example-icon" (click)="logout()">verified_user</mat-icon>
 </mat-toolbar>
 
 <router-outlet></router-outlet>

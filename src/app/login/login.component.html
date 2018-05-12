@@ -1,9 +1,23 @@
-<div>
-    {{number}}
+<div fxLayout="row" style="height: -webkit-fill-available"
+     fxLayoutAlign="center center">
+
+    <mat-card fxFlex="40%">
+        <mat-card-header>
+            <mat-card-title>Login</mat-card-title>
+        </mat-card-header>
+        <mat-card-content fxLayout="column">
+            <mat-form-field>
+                <input matInput placeholder="Name" [(ngModel)] = user.name type="text">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Surname" [(ngModel)] = user.surname type="text">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Email" [(ngModel)] = user.email type="email">
+            </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions fxLayoutAlign="end none">
+            <button mat-raised-button color="primary" (click)="login()">Login</button>
+        </mat-card-actions>
+    </mat-card>
 </div>
-
-<mat-form-field>
-    <input matInput placeholder="Type the number" type="number" required #input>
-</mat-form-field>
-
-<button mat-button (click)="change(input.value)">Change</button>

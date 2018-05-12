@@ -1,3 +1,20 @@
 .mat-toolbar {
     justify-content: space-between;
+
+    ul {
+        display: inline-flex;
+        list-style-type: none;
+        li {
+            margin-left: 20px;
+            a {
+                color: #000;
+                text-decoration: none;
+            }
+        }
+    }
+
+    .active {
+        background-color: #d8d8d8;
+        padding: 20px;
+    }
 }

@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
     selector: 'app-login',
@@ -15,26 +16,31 @@ export class LoginComponent implements OnInit {
     percent: number;
     couter: number;
 
-    constructor() {
+    constructor(
+        private route: ActivatedRoute,
+        private router: Router,
+    ) {
     }
 
     ngOnInit() {
     }
 
-    change(number: number) {
-        this.stop();
-        setTimeout(() => {
-            this.nextNumber = number;
-            if (this.number < this.nextNumber) {
-                this.percent = (this.nextNumber - this.number) / 100;
-                this.couter = 15;
-                this.changerP();
-            } else if (this.number > this.nextNumber) {
-                this.percent = (this.nextNumber - this.number) / 100;
-                this.couter = 15;
-                this.changerM();
-            }
-        }, 50);
+    login () {
+        // this.stop();
+        // setTimeout(() => {
+        //     this.nextNumber = number;
+        //     if (this.number < this.nextNumber) {
+        //         this.percent = (this.nextNumber - this.number) / 100;
+        //         this.couter = 15;
+        //         this.changerP();
+        //     } else if (this.number > this.nextNumber) {
+        //         this.percent = (this.nextNumber - this.number) / 100;
+        //         this.couter = 15;
+        //         this.changerM();
+        //     }
+        // }, 50);
+
+        this.router.navigate(['/admin/user']);
     }
 
     pluser() {

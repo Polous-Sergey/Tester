@@ -5,12 +5,19 @@ import {Task} from '../model/task';
 export class DataProviderService {
     user;
 
+    constructor() {
+    }
+
+    getTests() {
+        return this.testsArr;
+    }
+
     testsArr: Task[] = [
         {
             name: 'First Test',
             sections: [
                 {
-                    name: 'first',
+                    name: 'first1',
                     questions: [
                         {
                             name: 'Simple test question texy for example',
@@ -102,10 +109,10 @@ export class DataProviderService {
                     ],
                 },
                 {
-                    name: 'last',
+                    name: 'last1',
                     questions: [
                         {
-                            name: 'Simple test question texy for example',
+                            name: 'Simple test question texy for qeweqwe',
                             type: 'radio',
                             answers: [
                                 {
@@ -153,7 +160,7 @@ export class DataProviderService {
             name: 'Second Test',
             sections: [
                 {
-                    name: 'first',
+                    name: 'first2',
                     questions: [
                         {
                             name: 'Simple test question texy for example',
@@ -184,10 +191,5 @@ export class DataProviderService {
         }
     ];
 
-    constructor() {
-    }
 
-    getTests() {
-        return this.testsArr;
-    }
 }

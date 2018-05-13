@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Section} from '../../shared/model/section';
 import {MatDialog} from '@angular/material';
 import {AddSectionComponent} from '../../shared/modal/add-section/add-section.component';
-import {AddQuestionComponent} from "../../shared/modal/add-question/add-question.component";
-import {Question} from "../../shared/model/question";
+import {AddQuestionComponent} from '../../shared/modal/add-question/add-question.component';
+import {Question} from '../../shared/model/question';
 import {DataProviderService} from '../../shared/services/data-provider.service';
 
 @Component({
@@ -13,38 +13,9 @@ import {DataProviderService} from '../../shared/services/data-provider.service';
 })
 export class SurveyListComponent implements OnInit {
     questionaries;
-    items: Section[] = [
-        {
-            name: 'first',
-            questions: [
-                {
-                    name: 'Simple test question texy for example',
-                    type: 'radio',
-                    answers: []
-                },
-                {
-                    name: 'Simple test question texy for example',
-                    type: 'radio',
-                    answers: []
-                },
-                {
-                    name: 'Simple test question texy for example',
-                    type: 'radio',
-                    answers: []
-                }
-            ],
-        },
-        {
-            name: 'second',
-            questions: [],
-        },
-        {
-            name: 'last',
-            questions: [],
-        }
-    ];
-
-    activeSection: Section = this.items[0];
+    items;
+    selectName;
+    activeSection: Section;
     activeSectionIndex = 0;
 
 
@@ -52,8 +23,16 @@ export class SurveyListComponent implements OnInit {
                 public data: DataProviderService) {
     }
 
+    selectTest(questions) {
+        this.items = questions;
+        this.activeSection = this.items[0];
+    }
+
     ngOnInit() {
         this.questionaries = this.data.getTests();
+        this.items = this.questionaries[0].sections;
+        this.activeSection = this.items[0];
+        this.selectName = this.questionaries[0].name;
     }
 
     openAddSectionDialog(): void {
@@ -84,7 +63,7 @@ export class SurveyListComponent implements OnInit {
         const dialogRef = this.dialog.open(AddQuestionComponent, confiq);
 
         dialogRef.afterClosed().subscribe(result => {
-            console.log(result)
+            console.log(result);
             if (result) {
                 if (index || index === 0) {
                     this.items[this.activeSectionIndex].questions[index] = {

@@ -24,13 +24,11 @@
     <mat-sidenav-content>
 
         <mat-toolbar>
-            <!--<mat-form-field>-->
-                <mat-select placeholder="Select a test" [(value)]="items">
-                    <mat-option *ngFor="let test of this.questionaries let index = index" [value]="test.task" >
+                <mat-select [(value)]="selectName">
+                    <mat-option *ngFor="let test of this.questionaries" [value]="test.name"  (click)="selectTest(test.sections)" >
                         {{ test.name }}
                     </mat-option>
                 </mat-select>
-            <!--</mat-form-field>-->
         </mat-toolbar>
 
         <div fxLayout="row"

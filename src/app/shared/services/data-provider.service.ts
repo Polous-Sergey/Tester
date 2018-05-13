@@ -1,12 +1,14 @@
 import {Injectable} from '@angular/core';
+import {Task} from '../model/task';
 
 @Injectable()
 export class DataProviderService {
     user;
-    testsArr = [
+
+    testsArr: Task[] = [
         {
             name: 'First Test',
-            task: [
+            sections: [
                 {
                     name: 'first',
                     questions: [
@@ -149,7 +151,7 @@ export class DataProviderService {
         },
         {
             name: 'Second Test',
-            task: [
+            sections: [
                 {
                     name: 'first',
                     questions: [
@@ -179,7 +181,7 @@ export class DataProviderService {
                     questions: [],
                 }
             ]
-        },
+        }
     ];
 
     constructor() {

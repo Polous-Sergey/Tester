@@ -16,6 +16,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AddSectionComponent} from './shared/modal/add-section/add-section.component';
 import {AddQuestionComponent} from './shared/modal/add-question/add-question.component';
 import {DeleteComponent} from './shared/modal/delete/delete.component';
+import {DataProviderService} from './shared/services/data-provider.service';
 
 @NgModule({
     declarations: [
@@ -42,7 +43,9 @@ import {DeleteComponent} from './shared/modal/delete/delete.component';
         FormsModule,
         MaterialModule
     ],
-    providers: [],
+    providers: [
+        DataProviderService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {

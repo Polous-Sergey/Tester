@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from '../shared/model/user';
 import {Router} from '@angular/router';
+import {DataProviderService} from '../shared/services/data-provider.service';
 
 @Component({
     selector: 'app-login',
@@ -14,7 +15,8 @@ export class LoginComponent implements OnInit {
         email: '',
     };
 
-    constructor(private router: Router) {
+    constructor(private router: Router,
+                private data: DataProviderService) {
     }
 
     ngOnInit() {
@@ -22,7 +24,13 @@ export class LoginComponent implements OnInit {
 
     login() {
         if (this.user.name !== '' && this.user.surname !== '' && this.user.email !== '') {
-            this.router.navigate(['/admin/user']);
+            if (this.user.name === 'admin' && this.user.surname === 'admin') {
+                this.router.navigate(['/admin/user']);
+            } else {
+                this.data.user = this.user;
+                this.router.navigate(['/user']);
+            }
+
         }
     }
 

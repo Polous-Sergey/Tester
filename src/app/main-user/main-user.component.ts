@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Section} from '../shared/model/section';
+import {Router} from '@angular/router';
+import {DataProviderService} from '../shared/services/data-provider.service';
 
 @Component({
     selector: 'app-main-user',
@@ -7,71 +9,46 @@ import {Section} from '../shared/model/section';
     styleUrls: ['./main-user.component.scss']
 })
 export class MainUserComponent implements OnInit {
-    items: Section[] = [
-        {
-            name: 'first',
-            questions: [
-                {
-                    name: 'Simple test question texy for example',
-                    type: 'radio',
-                    answers: [
-                        {
-                            name: 'answer1',
-                            isTrue: true
-                        },
-                        {
-                            name: 'answer2',
-                            isTrue: false
-                        },
-                        {
-                            name: 'answer13',
-                            isTrue: false
-                        }
-                    ]
-                },
-                {
-                    name: 'Simple test question texy for example',
-                    type: 'checkbox',
-                    answers: [
-                        {
-                            name: 'answer1',
-                            isTrue: true
-                        },
-                        {
-                            name: 'answer2',
-                            isTrue: false
-                        },
-                        {
-                            name: 'answer13',
-                            isTrue: false
-                        }
-                    ]
-                },
-                {
-                    name: 'Simple test question texy for example',
-                    type: 'radio',
-                    answers: []
-                }
-            ],
-        },
-        {
-            name: 'second',
-            questions: [],
-        },
-        {
-            name: 'last',
-            questions: [],
-        }
-    ];
+
+    testsArr = [];
+    items: Section[] = [];
+    workingOnTest = false;
 
     curentSection: Section;
+    sectionCounter = 0;
     userAnswers = [];
 
-    constructor() {
+
+    constructor(private router: Router,
+                public data: DataProviderService) {
+    }
+
+    logout() {
+        this.router.navigate(['/login']);
     }
 
     ngOnInit() {
-        this.curentSection = this.items[0];
+        // this.curentSection = this.items[0];
+        this.testsArr = this.data.getTests();
+        // if (this.items.length > 0) {
+        //     this.curentSection.questions.forEach((question, index) => {
+        //         if (question.type === 'checkbox') {
+        //             this.userAnswers[index] = [];
+        //         }
+        //     });
+        // }
+    }
+
+    next() {
+        console.log(this.userAnswers);
+
+        if (this.sectionCounter < (this.items.length - 1)) {
+            this.sectionCounter++;
+            this.curentSection = this.items[this.sectionCounter];
+        } else {
+            console.log('ended');
+            this.workingOnTest = false;
+        }
 
         this.curentSection.questions.forEach((question, index) => {
             if (question.type === 'checkbox') {
@@ -80,8 +57,19 @@ export class MainUserComponent implements OnInit {
         });
     }
 
-    next() {
-        console.log(this.userAnswers);
+
+    startTest(test) {
+        this.sectionCounter = 0;
+        console.log(test);
+        this.items = test.task;
+        this.curentSection = this.items[0];
+        this.curentSection.questions.forEach((question, index) => {
+            if (question.type === 'checkbox') {
+                this.userAnswers[index] = [];
+            }
+        });
+        this.workingOnTest = true;
     }
+
 
 }

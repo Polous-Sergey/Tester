@@ -9,7 +9,7 @@ import {SurveyListComponent} from './main-admin/survey-list/survey-list.componen
 const appRoutes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full'},
     {path: 'login', component: LoginComponent},
-    {path: 'user', component: MainUserComponent},
+    {path: 'user', component: MainUserComponent },
     {path: 'admin', component: MainAdminComponent, children: [
             {path: 'user', component: UserListComponent},
             {path: 'survey', component: SurveyListComponent},

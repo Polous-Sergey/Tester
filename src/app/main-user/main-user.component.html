@@ -1,10 +1,44 @@
 <mat-toolbar>
-    <span>
+    <span (click)="workingOnTest = false">
         Tester
     </span>
+    <mat-icon class="example-icon" (click)="logout()">verified_user</mat-icon>
 </mat-toolbar>
+
+<div fxLayout="column" *ngIf="!workingOnTest">
+
+    <div fxLayout="row"
+         fxLayoutAlign="center center"
+         *ngFor="let test of testsArr let index = index">
+
+        <mat-card fxFlex="80%"
+                  fxLayoutAlign="space-between center">
+
+            <div fxLayout="row"
+                 fxFlex="100%"
+                 fxLayoutAlign="center center">
+
+                <div fxFlex="10%" fxLayoutAlign="center center">
+                    <mat-card-subtitle >№{{index + 1}}</mat-card-subtitle>
+                </div>
+
+                <div fxFlex="90%" fxLayoutAlign="space-between center">
+                    <p>
+                        {{test.name}}
+                    </p>
+
+                    <div>
+                        <button mat-button (click)="startTest(test)"> Start</button>
+                    </div>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+</div>
+
+
 <div fxLayout="row"
-     fxLayoutAlign="center center">
+     fxLayoutAlign="center center" *ngIf="workingOnTest">
     <div fxFlex="80%">
         <h2>{{curentSection.name}}</h2>
         <mat-card

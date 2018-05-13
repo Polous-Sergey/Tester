@@ -37,10 +37,10 @@ export class AddQuestionComponent implements OnInit {
     }
 
     addAnswer() {
-this.answers.push({
-    name: '',
-    isTrue: false
-});
+        this.answers.push({
+            name: '',
+            isTrue: false
+        });
     }
 
 

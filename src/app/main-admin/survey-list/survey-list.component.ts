@@ -35,6 +35,17 @@ export class SurveyListComponent implements OnInit {
         this.selectName = this.questionaries[0].name;
     }
 
+    addQuestionarie(name) {
+        this.questionaries.push({
+            name: name,
+            sections: []
+        });
+
+        this.items = this.questionaries[(this.questionaries.length - 1)].sections;
+        this.selectName = this.questionaries[(this.questionaries.length - 1)].name;
+        this.activeSection = this.items[0];
+    }
+
     openAddSectionDialog(): void {
         const confiq: any = {
             width: '350px',

@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
         name: '',
         surname: '',
         email: '',
+        tests: []
     };
 
     constructor(private router: Router,
@@ -27,7 +28,7 @@ export class LoginComponent implements OnInit {
             if (this.user.name === 'admin' && this.user.surname === 'admin') {
                 this.router.navigate(['/admin/user']);
             } else {
-                this.data.user = this.user;
+                this.data.users.push(this.user) ;
                 this.router.navigate(['/user']);
             }
 

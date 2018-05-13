@@ -23,17 +23,32 @@
 
     <mat-sidenav-content>
 
-        <mat-toolbar>
-                <mat-select [(value)]="selectName">
+        <mat-toolbar fxLayout="row"
+                     fxLayoutAlign="center center">
+
+                <mat-select [(value)]="selectName" *ngIf="!addShit">
                     <mat-option *ngFor="let test of this.questionaries" [value]="test.name"  (click)="selectTest(test.sections)" >
                         {{ test.name }}
                     </mat-option>
                 </mat-select>
+            <button mat-button (click)="addShit = true" *ngIf="!addShit">Add Questionarie</button>
+
+            <div *ngIf="addShit" fxFlex="40%"  style="justify-content: space-between;">
+                <mat-form-field class="example-full-width" style="width: 100%;">
+                    <input type="text" matInput placeholder="Questionarie name" #qName>
+                </mat-form-field>
+
+                <button mat-button (click)="addShit = false; addQuestionarie(qName.value);sidenav.toggle()">Add Questionarie</button>
+                <button mat-button (click)="addShit = false; ">Quit</button>
+            </div>
         </mat-toolbar>
+
+
+
 
         <div fxLayout="row"
              fxLayoutWrap fxLayoutGap="0.5%"
-             fxLayoutAlign=" center">
+             fxLayoutAlign=" center"  >
 
             <div fxFlex="10%" fxLayoutAlign="center none">
                 <button mat-icon-button (click)="sidenav.toggle()">
@@ -41,7 +56,7 @@
                 </button>
             </div>
 
-            <div fxFlex="80%" fxLayoutAlign="space-between center">
+            <div fxFlex="80%" fxLayoutAlign="space-between center" *ngIf="activeSection">
                 <h2>{{activeSection.name}}</h2>
 
                 <div>
@@ -56,7 +71,7 @@
 
         </div>
 
-        <div fxLayout="column">
+        <div fxLayout="column" *ngIf="activeSection">
 
             <div fxLayout="row"
                  fxLayoutAlign="center center"

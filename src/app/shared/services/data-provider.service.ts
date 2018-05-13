@@ -1,10 +1,32 @@
 import {Injectable} from '@angular/core';
 import {Task} from '../model/task';
-import { LocalStorageService } from 'angular-2-local-storage';
+import {LocalStorageService} from 'angular-2-local-storage';
 
 @Injectable()
 export class DataProviderService {
-    user;
+    users = [
+        {
+            name: 'first',
+            surname: 'first',
+            email: 'first@first.ua',
+            tests: [{
+                name: 'first test',
+                mark: 10
+            }]
+        },
+        {
+            name: 'first',
+            surname: 'first',
+            email: 'first@first.ua',
+            tests: [{
+                name: 'first test',
+                mark: 10
+            }, {
+                name: 'first test',
+                mark: 10
+            }]
+        }
+    ];
 
     constructor(private localStorageService: LocalStorageService) {
 
@@ -14,6 +36,10 @@ export class DataProviderService {
         this.localStorageService.set('tests', this.testsArr);
         this.localStorageService.get('tests');
         return this.testsArr;
+    }
+
+    getUsers () {
+        return this.users;
     }
 
     testsArr: Task[] = [

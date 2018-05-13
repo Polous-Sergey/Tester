@@ -9,7 +9,7 @@
 
     <div fxLayout="row"
          fxLayoutAlign="center center"
-         *ngFor="let test of testsArr let index = index">
+         *ngFor="let test of testsArr let index = index" style="margin-top: 10px">
 
         <mat-card fxFlex="80%"
                   fxLayoutAlign="space-between center">
@@ -19,7 +19,7 @@
                  fxLayoutAlign="center center">
 
                 <div fxFlex="10%" fxLayoutAlign="center center">
-                    <mat-card-subtitle >№{{index + 1}}</mat-card-subtitle>
+                    <mat-card-subtitle>№{{index + 1}}</mat-card-subtitle>
                 </div>
 
                 <div fxFlex="90%" fxLayoutAlign="space-between center">
@@ -28,7 +28,7 @@
                     </p>
 
                     <div>
-                        <button mat-button (click)="startTest(test)"> Start</button>
+                        <button mat-button (click)="startTest(index)"> Start</button>
                     </div>
                 </div>
             </div>
@@ -41,9 +41,8 @@
      fxLayoutAlign="center center" *ngIf="workingOnTest">
     <div fxFlex="80%">
         <h2>{{curentSection.name}}</h2>
-        <mat-card
-                *ngFor="let question of curentSection.questions let indexQuestion = index"
-                style="margin-top: 10px">
+        <mat-card *ngFor="let question of curentSection.questions let indexQuestion = index"
+                  style="margin-top: 10px">
             <label>{{question.name}}: </label>
             <div *ngIf="question.type === 'radio'">
 
@@ -69,9 +68,10 @@
 
             </div>
         </mat-card>
-
-        <button mat-raised-button color="primary" (click)="next()">Primary</button>
-
+        <div fxLayout="row"
+             fxLayoutAlign="end center" style="margin-top: 10px">
+            <button mat-raised-button color="primary" (click)="next()">Next</button>
+        </div>
     </div>
 
 </div>

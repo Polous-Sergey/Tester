@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Task} from '../model/task';
+import { LocalStorage } from '@ngx-pwa/local-storage';
 
 @Injectable()
 export class DataProviderService {
@@ -184,7 +185,7 @@ export class DataProviderService {
         }
     ];
 
-    constructor() {
+    constructor(protected localStorage: LocalStorage) {
     }
 
     getTests() {

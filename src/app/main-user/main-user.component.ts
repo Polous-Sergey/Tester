@@ -45,28 +45,28 @@ export class MainUserComponent implements OnInit {
 
         if (this.sectionCounter < (this.items.length - 1)) {
             this.sectionCounter++;
+            this.userAnswers = [];
             this.curentSection = this.items[this.sectionCounter];
+            this.curentSection.questions.forEach((question, index) => {
+                if (question.type === 'checkbox') {
+                    this.userAnswers[index] = [];
+                }
+            });
         } else {
             console.log('ended');
             this.workingOnTest = false;
         }
-
-        this.curentSection.questions.forEach((question, index) => {
-            if (question.type === 'checkbox') {
-                this.userAnswers[index] = [];
-            }
-        });
     }
 
 
-    startTest(test) {
+    startTest(index: number) {
         this.sectionCounter = 0;
-        console.log(test);
-        this.items = test.task;
+        this.items = this.testsArr[index].sections;
         this.curentSection = this.items[0];
-        this.curentSection.questions.forEach((question, index) => {
+        this.userAnswers = [];
+        this.curentSection.questions.forEach((question, i) => {
             if (question.type === 'checkbox') {
-                this.userAnswers[index] = [];
+                this.userAnswers[i] = [];
             }
         });
         this.workingOnTest = true;

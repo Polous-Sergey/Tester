@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Task} from '../model/task';
-import { LocalStorage } from '@ngx-pwa/local-storage';
+// import { LocalStorage } from '@ngx-pwa/local-storage';
 
 @Injectable()
 export class DataProviderService {
@@ -11,7 +11,7 @@ export class DataProviderService {
             name: 'First Test',
             sections: [
                 {
-                    name: 'first',
+                    name: 'first1',
                     questions: [
                         {
                             name: 'Simple test question texy for example',
@@ -103,10 +103,10 @@ export class DataProviderService {
                     ],
                 },
                 {
-                    name: 'last',
+                    name: 'last1',
                     questions: [
                         {
-                            name: 'Simple test question texy for example',
+                            name: 'Simple test question texy for qeweqwe',
                             type: 'radio',
                             answers: [
                                 {
@@ -154,7 +154,7 @@ export class DataProviderService {
             name: 'Second Test',
             sections: [
                 {
-                    name: 'first',
+                    name: 'first2',
                     questions: [
                         {
                             name: 'Simple test question texy for example',
@@ -185,7 +185,8 @@ export class DataProviderService {
         }
     ];
 
-    constructor(protected localStorage: LocalStorage) {
+    // constructor(protected localStorage: LocalStorage) {
+    constructor() {
     }
 
     getTests() {

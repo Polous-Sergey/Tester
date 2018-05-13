@@ -9,7 +9,8 @@
         </div>
 
         <div class="block-container">
-            <div *ngFor="let item of items let index = index" (click)="setActiveSection(item, index)" class="not-active-item">
+            <div *ngFor="let item of items let index = index" (click)="setActiveSection(item, index)"
+                 class="not-active-item">
                 <div class="block-item">
                     <div>
                         {{item.name}}
@@ -21,6 +22,14 @@
     </mat-sidenav>
 
     <mat-sidenav-content>
+
+        <mat-toolbar>
+                <mat-select [(value)]="selectName">
+                    <mat-option *ngFor="let test of this.questionaries" [value]="test.name"  (click)="selectTest(test.sections)" >
+                        {{ test.name }}
+                    </mat-option>
+                </mat-select>
+        </mat-toolbar>
 
         <div fxLayout="row"
              fxLayoutWrap fxLayoutGap="0.5%"
@@ -71,7 +80,8 @@
 
                             <div>
                                 <button mat-icon-button>
-                                    <mat-icon aria-label="Edit" (click)="openAddQuestionDialog(question, index)">edit</mat-icon>
+                                    <mat-icon aria-label="Edit" (click)="openAddQuestionDialog(question, index)">edit
+                                    </mat-icon>
                                 </button>
 
                                 <button mat-icon-button>

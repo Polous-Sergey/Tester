@@ -1,10 +1,20 @@
 import {Injectable} from '@angular/core';
 import {Task} from '../model/task';
-// import { LocalStorage } from '@ngx-pwa/local-storage';
+import { LocalStorageService } from 'angular-2-local-storage';
 
 @Injectable()
 export class DataProviderService {
     user;
+
+    constructor(private localStorageService: LocalStorageService) {
+
+    }
+
+    getTests() {
+        this.localStorageService.set('tests', this.testsArr);
+        this.localStorageService.get('tests');
+        return this.testsArr;
+    }
 
     testsArr: Task[] = [
         {
@@ -186,10 +196,5 @@ export class DataProviderService {
     ];
 
     // constructor(protected localStorage: LocalStorage) {
-    constructor() {
-    }
 
-    getTests() {
-        return this.testsArr;
-    }
 }

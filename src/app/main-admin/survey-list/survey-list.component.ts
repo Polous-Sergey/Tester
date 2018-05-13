@@ -4,6 +4,7 @@ import {MatDialog} from '@angular/material';
 import {AddSectionComponent} from '../../shared/modal/add-section/add-section.component';
 import {AddQuestionComponent} from "../../shared/modal/add-question/add-question.component";
 import {Question} from "../../shared/model/question";
+import {DataProviderService} from '../../shared/services/data-provider.service';
 
 @Component({
     selector: 'app-survey-list',
@@ -11,6 +12,7 @@ import {Question} from "../../shared/model/question";
     styleUrls: ['./survey-list.component.scss']
 })
 export class SurveyListComponent implements OnInit {
+    questionaries;
     items: Section[] = [
         {
             name: 'first',
@@ -46,10 +48,12 @@ export class SurveyListComponent implements OnInit {
     activeSectionIndex = 0;
 
 
-    constructor(private dialog: MatDialog) {
+    constructor(private dialog: MatDialog,
+                public data: DataProviderService) {
     }
 
     ngOnInit() {
+        this.questionaries = this.data.getTests();
     }
 
     openAddSectionDialog(): void {

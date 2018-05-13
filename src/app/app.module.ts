@@ -4,6 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {FlexLayoutModule} from '@angular/flex-layout';
+import { LocalStorageModule } from 'angular-2-local-storage';
 
 import {AppComponent} from './app.component';
 import {MaterialModule} from './shared/material/material.module';
@@ -42,9 +43,15 @@ import {DataProviderService} from './shared/services/data-provider.service';
         FlexLayoutModule,
         FormsModule,
         MaterialModule,
+        LocalStorageModule.withConfig({
+            prefix: 'my-app',
+            storageType: 'localStorage'
+        })
+
     ],
     providers: [
-        DataProviderService
+        DataProviderService,
+
     ],
     bootstrap: [AppComponent]
 })

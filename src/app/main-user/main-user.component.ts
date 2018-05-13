@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Section} from '../shared/model/section';
 import {Router} from '@angular/router';
 import {DataProviderService} from '../shared/services/data-provider.service';
+import {Task} from '../shared/model/task';
 
 @Component({
     selector: 'app-main-user',
@@ -10,7 +11,7 @@ import {DataProviderService} from '../shared/services/data-provider.service';
 })
 export class MainUserComponent implements OnInit {
 
-    testsArr = [];
+    testsArr: Task[] = [];
     items: Section[] = [];
     workingOnTest = false;
 

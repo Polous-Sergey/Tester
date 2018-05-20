@@ -1,0 +1,22 @@
+<mat-toolbar>
+  <mat-toolbar fxLayout="row"
+               fxLayoutAlign="center center">
+
+    <mat-select [(value)]="selectName" *ngIf="!addShit">
+      <mat-option *ngFor="let lecture of lectures" [value]="lecure">
+        {{ lecture.name }}
+      </mat-option>
+    </mat-select>
+    <button mat-button (click)="addShit = true" *ngIf="!addShit">Add Questionarie</button>
+
+    <div *ngIf="addShit" fxFlex="40%"  style="justify-content: space-between;">
+      <mat-form-field class="example-full-width" style="width: 100%;">
+        <input type="text" matInput placeholder="Questionarie name" #lName>
+      </mat-form-field>
+
+      <button mat-button (click)="addShit = false; addQuestionarie(lName.value)">Add Lecture</button>
+      <button mat-button (click)="addShit = false; ">Quit</button>
+    </div>
+  </mat-toolbar>
+</mat-toolbar>
+<div [froalaEditor]>Hello, Froala!</div>

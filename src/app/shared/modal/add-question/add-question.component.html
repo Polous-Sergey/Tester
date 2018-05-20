@@ -1,33 +1,57 @@
 <h1 mat-dialog-title>Add New Question</h1>
 <div mat-dialog-content>
-  <p>Type text for new question</p>
-  <mat-form-field class="width-100">
-    <input matInput  placeholder="Text" [(ngModel)]="name">
-  </mat-form-field>
-  <mat-form-field class="width-100">
-    <mat-select required [(ngModel)]="type">
-      <mat-option value="radio">Radio button</mat-option>
-      <mat-option value="checkbox">Checkbox</mat-option>
-    </mat-select>
-    <mat-label>Type of question</mat-label>
-  </mat-form-field>
-<div>
-  <button
-          class="add-question"
-          mat-button (click)="addAnswer()">Add Answer</button>
-  <br>
-  <div *ngFor="let answer of answers">
-  <mat-form-field class="mat-input-element">
-    <input ngDefaultControl  matInput placeholder="answer" [(ngModel)]="answer.name" >
-  </mat-form-field>
-    <mat-checkbox ngDefaultControl (click)="answer.isTrue = !answer.isTrue" >Right option</mat-checkbox>
-  </div>
-</div>
+    <p>Type text for new question</p>
+    <mat-form-field class="width-100">
+        <input matInput placeholder="Text" [(ngModel)]="name">
+    </mat-form-field>
+    <mat-form-field class="width-100">
+        <mat-select required [(ngModel)]="type">
+            <mat-option value="radio" (click)="answers=[]">Radio button</mat-option>
+            <mat-option value="checkbox" (click)="answers=[]">Checkbox</mat-option>
+            <mat-option value="mapping" (click)="answers=[[],[]]"> Mapping</mat-option>
+        </mat-select>
+        <mat-label>Type of question</mat-label>
+    </mat-form-field>
+    <div>
+        <button
+                class="add-question"
+                mat-button (click)="(type === 'mapping'? addMap() : addAnswer())">Add Answer
+        </button>
+        <br>
+        <div *ngIf="type !== 'mapping' ">
+            <div *ngFor="let answer of answers">
+                <mat-form-field class="mat-input-element">
+                    <input ngDefaultControl matInput placeholder="answer" [(ngModel)]="answer.name">
+                </mat-form-field>
+                <mat-checkbox *ngIf="type === 'checkbox' " ngDefaultControl [checked]="answer.isTrue">Right option</mat-checkbox>
+                <mat-radio-button *ngIf="type === 'radio' " ngDefaultControl [checked]="answer.isTrue">Right option</mat-radio-button>
+            </div>
+        </div>
+
+        <div *ngIf="type === 'mapping' ">
+            <div style="width: 48%; display: inline-block">
+                <mat-form-field class="mat-input-element" *ngFor="let answer of answers[0]">
+                    <input ngDefaultControl matInput placeholder="sentence">
+                </mat-form-field>
+            </div>
+            <div style="width: 52%; display: inline-block">
+                <span *ngFor="let answer of answers[1]">
+                    <mat-form-field class="mat-input-element" >
+                    <input ngDefaultControl matInput placeholder="sentence">
+                </mat-form-field>
+                <button mat-icon-button style="    padding: 20px 20px 0;">
+                    <mat-icon aria-label="Delete">delete</mat-icon>
+                </button>
+                </span>
+
+            </div>
+        </div>
+    </div>
 
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="closeClick()">Cancel</button>
-  <button mat-button (click)="submitClick()">Submit</button>
+    <button mat-button (click)="closeClick()">Cancel</button>
+    <button mat-button (click)="submitClick()">Submit</button>
 </div>
 
 

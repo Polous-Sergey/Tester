@@ -1,32 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {DataProviderService} from '../../shared/services/data-provider.service';
 
 @Component({
-  selector: 'app-lectures-management',
-  templateUrl: './lectures-management.component.html',
-  styleUrls: ['./lectures-management.component.scss']
+    selector: 'app-lectures-management',
+    templateUrl: './lectures-management.component.html',
+    styleUrls: ['./lectures-management.component.scss']
 })
 export class LecturesManagementComponent implements OnInit {
-lectures = [
-    {
-      name: 'lecture 1',
-        data: null
-    },
-    {
-      name: 'lecture 2',
-        data: null
-    },
-    {
-      name: 'lecture 3',
-        data: null
-    },
-]
-  constructor() { }
+    lectures = [];
+    selectedLecture;
+    questionaries;
+    selectedQuestionarie;
 
-  ngOnInit() {
-  }
+    constructor(public data: DataProviderService) {
+    }
 
-    addQuestionarie (val){
-  console.log(val)
+    ngOnInit() {
+        this.lectures = this.data.getLectures();
+        this.questionaries = this.data.getTests();
+        this.selectedLecture = this.lectures[0];
+
+    }
+
+    addQuestionarie(val) {
+        console.log(val);
     }
 
 

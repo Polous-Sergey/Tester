@@ -38,7 +38,7 @@ export class DataProviderService {
         return this.testsArr;
     }
 
-    getUsers () {
+    getUsers() {
         return this.users;
     }
 
@@ -88,7 +88,20 @@ export class DataProviderService {
                         {
                             name: 'Simple test question texy for example',
                             type: 'radio',
-                            answers: []
+                            answers: [
+                                {
+                                    name: 'answer1',
+                                    isTrue: true
+                                },
+                                {
+                                    name: 'answer2',
+                                    isTrue: false
+                                },
+                                {
+                                    name: 'answer13',
+                                    isTrue: false
+                                }
+                            ]
                         }
                     ],
                 },
@@ -134,7 +147,20 @@ export class DataProviderService {
                         {
                             name: 'Simple test question texy for example',
                             type: 'radio',
-                            answers: []
+                            answers: [
+                                {
+                                    name: 'answer1',
+                                    isTrue: true
+                                },
+                                {
+                                    name: 'answer2',
+                                    isTrue: false
+                                },
+                                {
+                                    name: 'answer13',
+                                    isTrue: false
+                                }
+                            ]
                         }
                     ],
                 },
@@ -180,7 +206,20 @@ export class DataProviderService {
                         {
                             name: 'Simple test question texy for example',
                             type: 'radio',
-                            answers: []
+                            answers: [
+                                {
+                                    name: 'answer1',
+                                    isTrue: true
+                                },
+                                {
+                                    name: 'answer2',
+                                    isTrue: false
+                                },
+                                {
+                                    name: 'answer13',
+                                    isTrue: false
+                                }
+                            ]
                         }
                     ],
                 }
@@ -219,6 +258,6 @@ export class DataProviderService {
                 }
             ]
         }
-    ];z
+    ];
 
 }

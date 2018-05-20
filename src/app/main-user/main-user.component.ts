@@ -17,6 +17,7 @@ export class MainUserComponent implements OnInit {
 
     curentSection: Section;
     sectionCounter = 0;
+    allUserAnswers = [];
     userAnswers = [];
 
 
@@ -29,15 +30,7 @@ export class MainUserComponent implements OnInit {
     }
 
     ngOnInit() {
-        // this.curentSection = this.items[0];
         this.testsArr = this.data.getTests();
-        // if (this.items.length > 0) {
-        //     this.curentSection.questions.forEach((question, index) => {
-        //         if (question.type === 'checkbox') {
-        //             this.userAnswers[index] = [];
-        //         }
-        //     });
-        // }
     }
 
     next() {
@@ -45,6 +38,7 @@ export class MainUserComponent implements OnInit {
 
         if (this.sectionCounter < (this.items.length - 1)) {
             this.sectionCounter++;
+            this.allUserAnswers.push(this.userAnswers);
             this.userAnswers = [];
             this.curentSection = this.items[this.sectionCounter];
             this.curentSection.questions.forEach((question, index) => {
@@ -53,8 +47,55 @@ export class MainUserComponent implements OnInit {
                 }
             });
         } else {
-            console.log('ended');
+            this.allUserAnswers.push(this.userAnswers);
             this.workingOnTest = false;
+            let questionCounter = 0;
+            let oneQuestionPrice;
+            let userBalPercent = 0;
+            this.items.forEach((section, sectionIndex) => {
+                questionCounter += section.questions.length;
+            });
+            oneQuestionPrice = 100 / questionCounter;
+
+            this.items.forEach((section, sectionIndex) => {
+                section.questions.forEach((question, questionIndex) => {
+                    if (question.type === 'radio') {
+                        if (typeof this.allUserAnswers[sectionIndex][questionIndex] !== 'undefined') {
+                            if (question.answers[this.allUserAnswers[sectionIndex][questionIndex]].isTrue) {
+                                userBalPercent += oneQuestionPrice;
+                            }
+                        }
+                    } else if (question.type === 'checkbox') {
+                        let totalBal = 0;
+                        let counterRightAnswer = 0;
+                        question.answers.forEach((answer) => {
+                            if (answer.isTrue) {
+                                counterRightAnswer++;
+                            }
+                        });
+                        const oneCheck = oneQuestionPrice / counterRightAnswer;
+                        question.answers.forEach((answer, answerIndex) => {
+                            if (this.allUserAnswers[sectionIndex][questionIndex][answerIndex]) {
+                                if (answer.isTrue) {
+                                    totalBal += oneCheck;
+                                } else {
+                                    totalBal -= oneCheck;
+                                }
+                            } else {
+                                if (answer.isTrue) {
+                                    totalBal -= oneCheck;
+                                }
+                            }
+                        });
+                        if (totalBal > 0) {
+                            userBalPercent += totalBal;
+                        }
+                    }
+                });
+            });
+
+            console.log('result', userBalPercent);
+            this.allUserAnswers = [];
         }
     }
 

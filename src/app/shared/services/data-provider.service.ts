@@ -49,7 +49,7 @@ export class DataProviderService {
     lectures = [
         {
             name: 'lecture 1',
-            data: null,
+            data: '<h1>asdsdsadsds</h1>',
             questionarie: []
         },
         {
@@ -241,6 +241,6 @@ export class DataProviderService {
                 }
             ]
         }
-    ];z
+    ];
 
 }

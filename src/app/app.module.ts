@@ -4,8 +4,8 @@ import {FormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {FlexLayoutModule} from '@angular/flex-layout';
-import { LocalStorageModule } from 'angular-2-local-storage';
-import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import {LocalStorageModule} from 'angular-2-local-storage';
+import {FroalaEditorModule, FroalaViewModule} from 'angular-froala-wysiwyg';
 
 import {AppComponent} from './app.component';
 import {MaterialModule} from './shared/material/material.module';
@@ -19,7 +19,7 @@ import {AddSectionComponent} from './shared/modal/add-section/add-section.compon
 import {AddQuestionComponent} from './shared/modal/add-question/add-question.component';
 import {DeleteComponent} from './shared/modal/delete/delete.component';
 import {DataProviderService} from './shared/services/data-provider.service';
-import { LecturesManagementComponent } from './main-admin/lectures-management/lectures-management.component';
+import {LecturesManagementComponent} from './main-admin/lectures-management/lectures-management.component';
 
 @NgModule({
     declarations: [

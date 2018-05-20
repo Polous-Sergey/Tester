@@ -241,8 +241,6 @@ export class DataProviderService {
                 }
             ]
         }
-    ];
-
-    // constructor(protected localStorage: LocalStorage) {
+    ];z
 
 }

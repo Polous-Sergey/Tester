@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --open",
+    "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -23,7 +23,6 @@
     "@angular/platform-browser": "^6.0.0",
     "@angular/platform-browser-dynamic": "^6.0.0",
     "@angular/router": "^6.0.0",
-    "@ngx-pwa/local-storage": "^6.0.0-rc.0",
     "angular-2-local-storage": "^2.0.0",
     "angular-froala-wysiwyg": "^2.8.1",
     "core-js": "^2.5.4",

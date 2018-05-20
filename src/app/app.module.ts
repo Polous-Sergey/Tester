@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {FlexLayoutModule} from '@angular/flex-layout';
-import { LocalStorageModule } from 'angular-2-local-storage';
+import {LocalStorageModule} from 'angular-2-local-storage';
 
 import {AppComponent} from './app.component';
 import {MaterialModule} from './shared/material/material.module';

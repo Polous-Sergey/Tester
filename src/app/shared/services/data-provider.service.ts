@@ -193,6 +193,6 @@ export class DataProviderService {
                 }
             ]
         }
-    ];
+    ];z
 
 }

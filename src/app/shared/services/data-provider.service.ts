@@ -42,6 +42,28 @@ export class DataProviderService {
         return this.users;
     }
 
+    getLectures() {
+        return this.lectures;
+    }
+
+    lectures = [
+        {
+            name: 'lecture 1',
+            data: '<h1>asdsdsadsds</h1>',
+            questionarie: []
+        },
+        {
+            name: 'lecture 2',
+            data: null,
+            questionarie: []
+        },
+        {
+            name: 'lecture 3',
+            data: null,
+            questionarie: []
+        },
+    ];
+
     testsArr: Task[] = [
         {
             name: 'First Test',

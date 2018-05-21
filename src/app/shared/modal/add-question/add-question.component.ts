@@ -44,4 +44,16 @@ export class AddQuestionComponent implements OnInit {
     }
 
 
+    addMap() {
+        this.answers[0].push({
+            name: ''
+        });
+        this.answers[1].push({
+            name: '',
+            trueIndex: this.answers[0].length
+        });
+        console.log(this.answers[1]);
+    }
+
+
 }

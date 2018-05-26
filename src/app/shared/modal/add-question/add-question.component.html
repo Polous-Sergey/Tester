@@ -31,13 +31,13 @@
         <div *ngIf="type === 'mapping' ">
             <div style="width: 48%; display: inline-block">
                 <mat-form-field class="mat-input-element" *ngFor="let answer of answers[0]">
-                    <input ngDefaultControl matInput placeholder="sentence">
+                    <input ngDefaultControl matInput placeholder="sentence" [(ngModel)]="answer.name">
                 </mat-form-field>
             </div>
             <div style="width: 52%; display: inline-block">
                 <span *ngFor="let answer of answers[1]">
                     <mat-form-field class="mat-input-element" >
-                    <input ngDefaultControl matInput placeholder="sentence">
+                    <input ngDefaultControl matInput placeholder="sentence" [(ngModel)]="answer.name">
                 </mat-form-field>
                 <button mat-icon-button style="    padding: 20px 20px 0;">
                     <mat-icon aria-label="Delete">delete</mat-icon>

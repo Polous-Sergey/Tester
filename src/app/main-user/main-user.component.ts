@@ -90,6 +90,13 @@ export class MainUserComponent implements OnInit {
                         if (totalBal > 0) {
                             userBalPercent += totalBal;
                         }
+                    } else if (question.type === 'mapping') {
+                        const oneCheck = oneQuestionPrice / question.answers[0].length;
+                        question.answers[0].forEach((answer, answerIndex) => {
+                            if (this.allUserAnswers[sectionIndex][questionIndex][answerIndex] === 'true') {
+                                userBalPercent += oneCheck;
+                            }
+                        });
                     }
                 });
             });
@@ -106,12 +113,34 @@ export class MainUserComponent implements OnInit {
         this.curentSection = this.items[0];
         this.userAnswers = [];
         this.curentSection.questions.forEach((question, i) => {
-            if (question.type === 'checkbox') {
+            if (question.type === 'checkbox' || question.type === 'mapping') {
                 this.userAnswers[i] = [];
+            }
+            if (question.type === 'mapping') {
+                question.answers[1] = this.shuffle(question.answers[1]);
             }
         });
         this.workingOnTest = true;
     }
 
+
+    shuffle(array) {
+        let currentIndex = array.length, temporaryValue, randomIndex;
+
+        // While there remain elements to shuffle...
+        while (0 !== currentIndex) {
+
+            // Pick a remaining element...
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+
+            // And swap it with the current element.
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+
+        return array;
+    }
 
 }

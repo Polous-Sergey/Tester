@@ -58,7 +58,7 @@
 
             <div *ngIf="question.type === 'checkbox'">
 
-                <div class="example-radio-group">
+                <div class="example-radiwo-group">
                     <mat-checkbox class="example-radio-button"
                                   *ngFor="let answer of question.answers let answerIndex = index"
                                   [(ngModel)]="userAnswers[indexQuestion][answerIndex]">
@@ -67,7 +67,33 @@
                 </div>
 
             </div>
+
+            <div *ngIf="question.type === 'mapping'" fxLayout="column">
+                <div *ngFor="let mpFirst of question.answers[0] let answerIndex = index" fxLayout="row">
+
+
+                    <div class="mapping-name">
+                        <div>
+                            {{mpFirst.name}}
+                        </div>
+                    </div>
+
+
+                    <mat-form-field>
+                        <mat-select [(value)]="userAnswers[indexQuestion][answerIndex]">
+                            <mat-option>None</mat-option>
+                            <mat-option *ngFor="let mpSecond of question.answers[1]"
+                                        value="{{mpSecond.trueIndex === answerIndex}}">
+                                {{mpSecond.name}} {{mpSecond.trueIndex === answerIndex}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+
+                </div>
+            </div>
         </mat-card>
+
         <div fxLayout="row"
              fxLayoutAlign="end center" style="margin-top: 10px">
             <button mat-raised-button color="primary" (click)="next()">Next</button>
@@ -75,5 +101,3 @@
     </div>
 
 </div>
-
-

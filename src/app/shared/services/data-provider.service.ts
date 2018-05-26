@@ -64,13 +64,29 @@ export class DataProviderService {
         },
     ];
 
-    testsArr: Task[] = [
+    testsArr = [
         {
             name: 'First Test',
             sections: [
                 {
                     name: 'first1',
                     questions: [
+                        {
+                            name: 'Simple test question texy for example multi',
+                            type: 'mapping',
+                            answers: [
+                                [
+                                    {name: '1'},
+                                    {name: '2'},
+                                    {name: '3'}
+                                ],
+                                [
+                                    {name: '1', trueIndex: 0},
+                                    {name: '2', trueIndex: 1},
+                                    {name: '3', trueIndex: 2}
+                                ]
+                            ]
+                        },
                         {
                             name: 'Simple test question texy for example',
                             type: 'radio',
@@ -186,100 +202,100 @@ export class DataProviderService {
                         }
                     ],
                 },
-                {
-                    name: 'last1',
-                    questions: [
-                        {
-                            name: 'Simple test question texy for qeweqwe',
-                            type: 'radio',
-                            answers: [
-                                {
-                                    name: 'answer1',
-                                    isTrue: true
-                                },
-                                {
-                                    name: 'answer2',
-                                    isTrue: false
-                                },
-                                {
-                                    name: 'answer13',
-                                    isTrue: false
-                                }
-                            ]
-                        },
-                        {
-                            name: 'Simple test question texy for example',
-                            type: 'checkbox',
-                            answers: [
-                                {
-                                    name: 'answer1',
-                                    isTrue: true
-                                },
-                                {
-                                    name: 'answer2',
-                                    isTrue: false
-                                },
-                                {
-                                    name: 'answer13',
-                                    isTrue: false
-                                }
-                            ]
-                        },
-                        {
-                            name: 'Simple test question texy for example',
-                            type: 'radio',
-                            answers: [
-                                {
-                                    name: 'answer1',
-                                    isTrue: true
-                                },
-                                {
-                                    name: 'answer2',
-                                    isTrue: false
-                                },
-                                {
-                                    name: 'answer13',
-                                    isTrue: false
-                                }
-                            ]
-                        }
-                    ],
-                }
-            ]
-        },
-        {
-            name: 'Second Test',
-            sections: [
-                {
-                    name: 'first2',
-                    questions: [
-                        {
-                            name: 'Simple test question texy for example',
-                            type: 'radio',
-                            answers: []
-                        },
-                        {
-                            name: 'Simple test question texy for example',
-                            type: 'radio',
-                            answers: []
-                        },
-                        {
-                            name: 'Simple test question texy for example',
-                            type: 'radio',
-                            answers: []
-                        }
-                    ],
-                },
-                {
-                    name: 'second',
-                    questions: [],
-                },
-                {
-                    name: 'last',
-                    questions: [],
-                }
-            ]
-        }
-    ];
+                //         {
+                //             name: 'last1',
+                //             questions: [
+                //                 {
+                //                     name: 'Simple test question texy for qeweqwe',
+                //                     type: 'radio',
+                //                     answers: [
+                //                         {
+                //                             name: 'answer1',
+                //                             isTrue: true
+                //                         },
+                //                         {
+                //                             name: 'answer2',
+                //                             isTrue: false
+                //                         },
+                //                         {
+                //                             name: 'answer13',
+                //                             isTrue: false
+                //                         }
+                //                     ]
+                //                 },
+                //                 {
+                //                     name: 'Simple test question texy for example',
+                //                     type: 'checkbox',
+                //                     answers: [
+                //                         {
+                //                             name: 'answer1',
+                //                             isTrue: true
+                //                         },
+                //                         {
+                //                             name: 'answer2',
+                //                             isTrue: false
+                //                         },
+                //                         {
+                //                             name: 'answer13',
+                //                             isTrue: false
+                //                         }
+                //                     ]
+                //                 },
+                //                 {
+                //                     name: 'Simple test question texy for example',
+                //                     type: 'radio',
+                //                     answers: [
+                //                         {
+                //                             name: 'answer1',
+                //                             isTrue: true
+                //                         },
+                //                         {
+                //                             name: 'answer2',
+                //                             isTrue: false
+                //                         },
+                //                         {
+                //                             name: 'answer13',
+                //                             isTrue: false
+                //                         }
+                //                     ]
+                //                 }
+                //             ],
+                //         }
+                //     ]
+                // },
+                // {
+                //     name: 'Second Test',
+                //     sections: [
+                //         {
+                //             name: 'first2',
+                //             questions: [
+                //                 {
+                //                     name: 'Simple test question texy for example',
+                //                     type: 'radio',
+                //                     answers: []
+                //                 },
+                //                 {
+                //                     name: 'Simple test question texy for example',
+                //                     type: 'radio',
+                //                     answers: []
+                //                 },
+                //                 {
+                //                     name: 'Simple test question texy for example',
+                //                     type: 'radio',
+                //                     answers: []
+                //                 }
+                //             ],
+                //         },
+                //         {
+                //             name: 'second',
+                //             questions: [],
+                //         },
+                //         {
+                //             name: 'last',
+                //             questions: [],
+                //         }
+                //     ]
+                // }
+            ];
 
 }

@@ -18,3 +18,12 @@
 mat-card-subtitle {
   margin: 0;
 }
+
+.mapping-name {
+  padding-bottom: 1.25em;
+  margin-right: 20px;
+  border-top: .84375em solid transparent;
+  div {
+    padding: .4375em 0;
+  }
+}

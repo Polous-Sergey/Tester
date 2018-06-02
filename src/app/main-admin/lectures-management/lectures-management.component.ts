@@ -24,7 +24,13 @@ export class LecturesManagementComponent implements OnInit {
 
     addQuestionarie(val) {
         console.log(val);
+        this.lectures.push({
+            name: val,
+            data: `<h1>Sample text for lecture ${val}</h1>`,
+            questionarie: []
+        });
+        console.log(this.lectures);
+        this.selectedLecture = this.lectures[this.lectures.length - 1];
     }
-
 
 }

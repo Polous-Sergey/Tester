@@ -13,8 +13,12 @@ export class LoginComponent implements OnInit {
         name: '',
         surname: '',
         email: '',
-        tests: []
+        password: '',
+        tests: [],
+        id: new Date().getTime()
     };
+    type = 'login';
+    error = null;
 
     constructor(private router: Router,
                 private data: DataProviderService) {
@@ -24,12 +28,18 @@ export class LoginComponent implements OnInit {
     }
 
     login() {
-        if (this.user.name !== '' && this.user.surname !== '' && this.user.email !== '') {
+        if (this.user.name !== '') {
             if (this.user.name === 'admin' && this.user.surname === 'admin') {
                 this.router.navigate(['/admin/user']);
             } else {
-                this.data.users.push(this.user) ;
-                this.router.navigate(['/user']);
+                if (this.type === 'login') {
+                    this.error = this.data.checkCreds(this.user);
+                    if (this.error === 'ok') this.router.navigate(['/user']);
+                } else {
+                    this.data.users.push(this.user);
+                    this.data.curentUser = this.user;
+                    this.router.navigate(['/user']);
+                }
             }
 
         }

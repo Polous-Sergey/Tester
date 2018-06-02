@@ -5,11 +5,85 @@
     <mat-icon class="example-icon" (click)="logout()">verified_user</mat-icon>
 </mat-toolbar>
 
-<div fxLayout="column" *ngIf="!workingOnTest">
+<div fxLayout="row"
+     fxLayoutAlign="center center"
+     style="    margin: 30px;
+    background: #8dbee8;"
+     *ngIf="testResults >= 0">
+    Your result is {{testResults}}
+
+</div>
+
+
+<div fxLayout="column" *ngIf="!workingOnTest && !workingOnLecture">
+
+    <!--<div fxLayout="row"-->
+    <!--fxLayoutAlign="center center"-->
+    <!--*ngFor="let test of testsArr let index = index" style="margin-top: 10px">-->
+
+    <!--<mat-card fxFlex="80%"-->
+    <!--fxLayoutAlign="space-between center">-->
+
+    <!--<div fxLayout="row"-->
+    <!--fxFlex="100%"-->
+    <!--fxLayoutAlign="center center">-->
+
+    <!--<div fxFlex="10%" fxLayoutAlign="center center">-->
+    <!--<mat-card-subtitle>№{{index + 1}}</mat-card-subtitle>-->
+    <!--</div>-->
+
+    <!--<div fxFlex="90%" fxLayoutAlign="space-between center">-->
+    <!--<p>-->
+    <!--{{test.name}}-->
+    <!--</p>-->
+
+    <!--<div>-->
+    <!--<button mat-button (click)="startTest(index)"> Start</button>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</mat-card>-->
+    <!--</div>-->
 
     <div fxLayout="row"
          fxLayoutAlign="center center"
-         *ngFor="let test of testsArr let index = index" style="margin-top: 10px">
+         *ngFor="let lecture of lecturesArr let index = index" style="margin-top: 10px">
+
+        <mat-card fxFlex="80%"
+                  fxLayoutAlign="space-between center">
+
+            <div fxLayout="row"
+                 fxFlex="100%"
+                 fxLayoutAlign="center center">
+
+                <div fxFlex="10%" fxLayoutAlign="center center">
+                    <mat-card-subtitle>№{{index + 1}}</mat-card-subtitle>
+                </div>
+
+                <div fxFlex="90%" fxLayoutAlign="space-between center">
+                    <p>
+                        {{lecture.name}}
+                    </p>
+
+                    <div>
+                        <button mat-button (click)="startLecture(lecture)"> Start</button>
+                    </div>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+
+</div>
+
+
+<div *ngIf="workingOnLecture">
+    <h2 style="text-align: center">{{currentLecture.name}}</h2>
+    <div [froalaView]="currentLecture.data"
+         style="    width: 90%;
+    margin: 70px auto;"></div>
+    <div fxLayout="row"
+         fxLayoutAlign="center center"
+         *ngFor="let test of currentLecture.questionarie let index = index" style="margin-top: 10px">
 
         <mat-card fxFlex="80%"
                   fxLayoutAlign="space-between center">
@@ -28,14 +102,13 @@
                     </p>
 
                     <div>
-                        <button mat-button (click)="startTest(index)"> Start</button>
+                        <button mat-button (click)="startTest(test)"> Start</button>
                     </div>
                 </div>
             </div>
         </mat-card>
     </div>
 </div>
-
 
 <div fxLayout="row"
      fxLayoutAlign="center center" *ngIf="workingOnTest">

@@ -11,11 +11,11 @@ import {Task} from '../shared/model/task';
 })
 export class MainUserComponent implements OnInit {
 
-    testsArr: Task[] = [];
-    items: Section[] = [];
+    testsArr = [];
+    items = [];
     workingOnTest = false;
 
-    curentSection: Section;
+    curentSection;
     sectionCounter = 0;
     allUserAnswers = [];
     userAnswers = [];

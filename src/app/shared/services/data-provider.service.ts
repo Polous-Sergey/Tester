@@ -34,6 +34,22 @@ export class DataProviderService {
         }
     ];
 
+    adminUsers = [];
+
+    getAll() {
+        this.users = this.localStorageService.get('users');
+        this.adminUsers = this.localStorageService.get('adminUsers');
+        this.lectures = this.localStorageService.get('lectures');
+        this.testsArr = this.localStorageService.get('testsArr');
+    }
+
+    saveAll() {
+        this.localStorageService.set('users', this.users);
+        this.localStorageService.set('adminUsers', this.adminUsers);
+        this.localStorageService.set('lectures', this.lectures);
+        this.localStorageService.set('testsArr', this.testsArr);
+    }
+
     constructor(private localStorageService: LocalStorageService) {
 
     }

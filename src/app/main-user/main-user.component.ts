@@ -20,7 +20,7 @@ export class MainUserComponent implements OnInit {
     testResults;
     testName;
 
-    curentSection;
+    curentSection: Section;
     sectionCounter = 0;
     allUserAnswers = [];
     userAnswers = [];
@@ -37,6 +37,7 @@ export class MainUserComponent implements OnInit {
     }
 
     logout() {
+        this.data.saveAll();
         this.router.navigate(['/login']);
     }
 

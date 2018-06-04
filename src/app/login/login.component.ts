@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
         tests: [],
         id: new Date().getTime()
     };
-    type = 'login';
+    type = 'Login';
     error = null;
 
     constructor(private router: Router,
@@ -25,24 +25,28 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.data.getAll();
     }
 
     login() {
-        if (this.user.name !== '') {
+        if (this.user.name.trim() !== '' || this.user.password.trim() !== '') {
             if (this.user.name === 'admin' && this.user.surname === 'admin') {
                 this.router.navigate(['/admin/user']);
             } else {
-                if (this.type === 'login') {
-                    this.error = this.data.checkCreds(this.user);
-                    if (this.error === 'ok') this.router.navigate(['/user']);
-                } else {
-                    this.data.users.push(this.user);
-                    this.data.curentUser = this.user;
-                    this.router.navigate(['/user']);
-                }
+                this.error = this.data.checkCreds(this.user);
+                if (this.error === 'ok') this.router.navigate(['/user']);
             }
+        } else this.error = 'One of the fields empty';
+    }
 
-        }
+    register() {
+        if (this.user.name.trim() !== '' ||
+            this.user.password.trim() !== '' ||
+            this.user.surname.trim() !== '' || this.user.email.trim() !== '') {
+            this.data.users.push(this.user);
+            this.data.curentUser = this.user;
+            this.router.navigate(['/user']);
+        }  else this.error = 'One of the fields empty';
     }
 
 

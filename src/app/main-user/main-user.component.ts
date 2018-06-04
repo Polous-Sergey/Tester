@@ -13,7 +13,7 @@ export class MainUserComponent implements OnInit {
 
     testsArr = [];
     lecturesArr = [];
-    items: Section[] = [];
+    items = [];
     workingOnTest = false;
     workingOnLecture = false;
     currentLecture;
@@ -37,6 +37,7 @@ export class MainUserComponent implements OnInit {
     }
 
     logout() {
+        this.data.saveAll();
         this.router.navigate(['/login']);
     }
 

@@ -12,8 +12,13 @@ import {Task} from '../shared/model/task';
 export class MainUserComponent implements OnInit {
 
     testsArr = [];
+    lecturesArr = [];
     items = [];
     workingOnTest = false;
+    workingOnLecture = false;
+    currentLecture;
+    testResults;
+    testName;
 
     curentSection;
     sectionCounter = 0;
@@ -25,12 +30,19 @@ export class MainUserComponent implements OnInit {
                 public data: DataProviderService) {
     }
 
+    startLecture(val) {
+        this.currentLecture = val;
+        this.workingOnLecture = true;
+        console.log(val);
+    }
+
     logout() {
         this.router.navigate(['/login']);
     }
 
     ngOnInit() {
         this.testsArr = this.data.getTests();
+        this.lecturesArr = this.data.getLectures();
     }
 
     next() {
@@ -102,14 +114,23 @@ export class MainUserComponent implements OnInit {
             });
 
             console.log('result', userBalPercent);
+            this.testResults = userBalPercent;
+            this.data.finishTest(this.testName, userBalPercent);
+            setTimeout(() => {
+                console.log('result', userBalPercent);
+                this.testResults = undefined;
+            }, 5000);
+
             this.allUserAnswers = [];
         }
     }
 
 
-    startTest(index: number) {
+    startTest(test) {
+        this.workingOnLecture = false;
         this.sectionCounter = 0;
-        this.items = this.testsArr[index].sections;
+        this.testName = test.name;
+        this.items = test.sections;
         this.curentSection = this.items[0];
         this.userAnswers = [];
         this.curentSection.questions.forEach((question, i) => {

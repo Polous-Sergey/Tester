@@ -1,75 +1,25 @@
-<!--<div class="example-header">-->
-    <!--<mat-form-field>-->
-        <!--<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">-->
-    <!--</mat-form-field>-->
-<!--</div>-->
+<ul class="list-group list-group-flush">
+    <li class="list-group-item" style="background-color: #E3F2FD">
+        <div class="row">
+            <div class="col text-center">Name</div>
+            <div class="col text-center">Surname</div>
+            <div class="col text-center">Email</div>
+            <div class="col text-center">Tests info</div>
+        </div>
 
-<div style="padding: 10px 60px">
-<mat-card style="background-color: whitesmoke;">
-    <mat-card-title  fxLayout="row"
-                     fxLayoutAlign="center center"> <span fxFlex>Name</span>  <span fxFlex>Surname</span>
-        <span fxFlex>Email</span><span fxFlex>Tests info</span></mat-card-title>
+    </li>
+    <li class="list-group-item" *ngFor="let user of users">
+        <div class="row">
+            <div class="col text-center">{{user.name}}</div>
+            <div class="col text-center">{{user.surname}}</div>
+            <div class="col text-center">{{user.email}}</div>
+            <div class="col text-center">
+                <div class="column" *ngFor="let test of user.tests">
+                    <span>{{test.name}}</span> - <span>{{test.mark}}</span> <br>
+                </div>
 
-</mat-card>
-<mat-card *ngFor="let user of users" >
-    <mat-card-title  fxLayout="row"
-                     fxLayoutAlign="center center"> <span fxFlex>{{user.name}}</span>  <span fxFlex>{{user.surname}}</span>
-        <span fxFlex>{{user.email}}</span> <span fxFlex> <span *ngFor="let test of user.tests" style="padding: 5px">
-             <span>{{test.name}}</span> - <span>{{test.mark}}</span> <br>
-        </span></span></mat-card-title>
-    <!--<span>Tests information</span> <br>-->
-    <!--<mat-card-subtitle *ngFor="let test of user.tests" class="secondary-display">-->
+            </div>
+        </div>
+    </li>
+</ul>
 
-        <!--<span>{{test.name}}</span> <span>{{test.mark}}</span>-->
-    <!--</mat-card-subtitle>-->
-</mat-card>
-</div>
-
-<!--<div class="example-container mat-elevation-z8" *ngIf="users.length>0">-->
-
-    <!--<table mat-table [dataSource]="dataSource" matSort >-->
-
-
-        <!--<ng-container matColumnDef="name">-->
-            <!--<th mat-header-cell *matHeaderCellDef mat-sort-header> Name</th>-->
-            <!--<td mat-cell *matCellDef="let row"> {{row.name}}</td>-->
-        <!--</ng-container>-->
-
-        <!--<ng-container matColumnDef="surname">-->
-            <!--<th mat-header-cell *matHeaderCellDef mat-sort-header> Surname</th>-->
-            <!--<td mat-cell *matCellDef="let row"> {{row.surname}}</td>-->
-        <!--</ng-container>-->
-
-        <!--<ng-container matColumnDef="email">-->
-            <!--<th mat-header-cell *matHeaderCellDef mat-sort-header> Email</th>-->
-            <!--<td mat-cell *matCellDef="let row"> {{row.email}}</td>-->
-        <!--</ng-container>-->
-
-        <!--<ng-container matColumnDef="progress">-->
-            <!--<th mat-header-cell *matHeaderCellDef mat-sort-header> Progress</th>-->
-            <!--<td mat-cell *matCellDef="let row"> <span *ngFor="let test of row.test">-->
-                <!--<span>{{test.name}}</span>: <span>{{test.mark}}</span>-->
-            <!--</span></td>-->
-        <!--</ng-container>-->
-
-        <!--<ng-container matColumnDef="assessment">-->
-            <!--<th mat-header-cell *matHeaderCellDef mat-sort-header> Assessment</th>-->
-            <!--<td mat-cell *matCellDef="let row"> {{row.assessment}} </td>-->
-        <!--</ng-container>-->
-
-        <!--<ng-container matColumnDef="actions">-->
-            <!--<th mat-header-cell *matHeaderCellDef> Actions</th>-->
-            <!--<td mat-cell *matCellDef="let row">-->
-                <!--action-->
-            <!--</td>-->
-        <!--</ng-container>-->
-
-        <!--<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>-->
-        <!--<tr mat-row *matRowDef="let row; columns: displayedColumns;">-->
-        <!--</tr>-->
-    <!--</table>-->
-
-    <!--<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>-->
-<!--</div>-->
-
-<!--[style.color]="row.assessment"-->

@@ -7,6 +7,10 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {LocalStorageModule} from 'angular-2-local-storage';
 import {FroalaEditorModule, FroalaViewModule} from 'angular-froala-wysiwyg';
 
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { ModalModule } from 'ngx-bootstrap/modal';
+
 import {AppComponent} from './app.component';
 import {MaterialModule} from './shared/material/material.module';
 import {MainAdminComponent} from './main-admin/main-admin.component';
@@ -52,7 +56,9 @@ import {LecturesManagementComponent} from './main-admin/lectures-management/lect
         }),
         FroalaEditorModule.forRoot(),
         FroalaViewModule.forRoot(),
-
+        BsDropdownModule.forRoot(),
+        TooltipModule.forRoot(),
+        ModalModule.forRoot()
     ],
     providers: [
         DataProviderService,

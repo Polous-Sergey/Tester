@@ -1,13 +1,23 @@
-<mat-toolbar>
-    <span>
-        Tester
-    </span>
-    <ul class="nav navbar-nav">
-        <li><a routerLink="/admin/user"  routerLinkActive="active">User managment</a></li>
-        <li><a routerLink="/admin/survey"  routerLinkActive="active">Survey management</a></li>
-        <li><a routerLink="/admin/lectures"  routerLinkActive="active">Lectures management</a></li>
-    </ul>
-  <mat-icon class="example-icon" (click)="logout()">verified_user</mat-icon>
-</mat-toolbar>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" routerLink="/admin/survey">Tester</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/admin/user"  routerLinkActive="active">User managment</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/admin/survey"  routerLinkActive="active">Survey management</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/admin/lectures"  routerLinkActive="active">Lectures management</a>
+            </li>
+        </ul>
+        <mat-icon class="example-icon" style="color: white" (click)="logout()">arrow_forward</mat-icon>
+    </div>
+</nav>
 
 <router-outlet></router-outlet>

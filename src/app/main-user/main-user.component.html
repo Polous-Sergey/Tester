@@ -1,9 +1,16 @@
-<mat-toolbar>
-    <span (click)="workingOnTest = false">
-        Tester
-    </span>
-    <mat-icon class="example-icon" (click)="logout()">verified_user</mat-icon>
-</mat-toolbar>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" style="color: white">Tester</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+        </ul>
+        <mat-icon class="example-icon" style="color: white" (click)="logout()">arrow_forward</mat-icon>
+    </div>
+</nav>
 
 <div fxLayout="row"
      fxLayoutAlign="center center"
@@ -16,34 +23,6 @@
 
 
 <div fxLayout="column" *ngIf="!workingOnTest && !workingOnLecture">
-
-    <!--<div fxLayout="row"-->
-    <!--fxLayoutAlign="center center"-->
-    <!--*ngFor="let test of testsArr let index = index" style="margin-top: 10px">-->
-
-    <!--<mat-card fxFlex="80%"-->
-    <!--fxLayoutAlign="space-between center">-->
-
-    <!--<div fxLayout="row"-->
-    <!--fxFlex="100%"-->
-    <!--fxLayoutAlign="center center">-->
-
-    <!--<div fxFlex="10%" fxLayoutAlign="center center">-->
-    <!--<mat-card-subtitle>№{{index + 1}}</mat-card-subtitle>-->
-    <!--</div>-->
-
-    <!--<div fxFlex="90%" fxLayoutAlign="space-between center">-->
-    <!--<p>-->
-    <!--{{test.name}}-->
-    <!--</p>-->
-
-    <!--<div>-->
-    <!--<button mat-button (click)="startTest(index)"> Start</button>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</mat-card>-->
-    <!--</div>-->
 
     <div fxLayout="row"
          fxLayoutAlign="center center"

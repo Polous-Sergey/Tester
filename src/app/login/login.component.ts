@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
         name: '',
         surname: '',
         email: '',
+        role: 1,
         password: '',
         tests: [],
         id: new Date().getTime()
@@ -30,12 +31,13 @@ export class LoginComponent implements OnInit {
 
     login() {
         if (this.user.name.trim() !== '' && this.user.password.trim() !== '') {
-            if (this.user.name === 'admin' && this.user.surname === 'admin') {
-                this.router.navigate(['/admin/user']);
-            } else {
-                this.error = this.data.checkCreds(this.user);
-                if (this.error === 'ok') this.router.navigate(['/user']);
+            this.error = this.data.checkCreds(this.user);
+            if (this.error === 'ok') {
+                if (this.data.curentUser.role === 1) {
+                    this.router.navigate(['/user']);
+                } else this.router.navigate(['/admin/user']);
             }
+
         } else this.error = 'One of the fields empty';
     }
 
@@ -46,7 +48,7 @@ export class LoginComponent implements OnInit {
             this.data.users.push(this.user);
             this.data.curentUser = this.user;
             this.router.navigate(['/user']);
-        }  else this.error = 'One of the fields empty';
+        } else this.error = 'One of the fields empty';
     }
 
 

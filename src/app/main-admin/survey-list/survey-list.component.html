@@ -31,7 +31,7 @@
                         {{ test.name }}
                     </mat-option>
                 </mat-select>
-            <button mat-button (click)="addShit = true" *ngIf="!addShit">Add Questionarie</button>
+            <button mat-button (click)="addShit = true" *ngIf="!addShit" style="background: #001041; color: white;">Add Questionarie</button>
 
             <div *ngIf="addShit" fxFlex="40%"  style="justify-content: space-between;">
                 <mat-form-field class="example-full-width" style="width: 100%;">
@@ -100,7 +100,7 @@
                                 </button>
 
                                 <button mat-icon-button>
-                                    <mat-icon aria-label="Delete">delete</mat-icon>
+                                    <mat-icon aria-label="Delete" (click)="delete(index)">delete</mat-icon>
                                 </button>
                             </div>
 

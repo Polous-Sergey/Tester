@@ -12,6 +12,18 @@ export class UserListComponent implements OnInit {
     displayedColumns = ['name', 'surname', 'email', 'progress', 'assessment', 'actions'];
     dataSource: MatTableDataSource<User>;
     users = [];
+    adminCreation;
+    error;
+
+    user = {
+        name: '',
+        password: '',
+        id: new Date().getTime(),
+        role: 2,
+        surname: '',
+        email: '',
+        tests: []
+    };
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
@@ -34,4 +46,15 @@ export class UserListComponent implements OnInit {
         this.dataSource.filter = filterValue;
     }
 
+    createAdmin() {
+        this.adminCreation = true;
+    }
+
+    create() {
+        if (this.user.name.trim() !== '' && this.user.password.trim() !== '') {
+            this.data.users.push(this.user);
+            this.adminCreation = false;
+        } else this.error = "Fill all fields"
+
+    }
 }

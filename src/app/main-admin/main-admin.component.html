@@ -1,4 +1,4 @@
-<mat-toolbar>
+<mat-toolbar style="background: #001041; color: white">
     <span>
         Tester
     </span>
@@ -7,7 +7,10 @@
         <li><a routerLink="/admin/survey"  routerLinkActive="active">Survey management</a></li>
         <li><a routerLink="/admin/lectures"  routerLinkActive="active">Lectures management</a></li>
     </ul>
-  <mat-icon class="example-icon" (click)="logout()">verified_user</mat-icon>
+  <mat-icon class="example-icon" (click)="logout()"><i class="material-icons">
+      redo
+  </i></mat-icon>
+    <!--<i class="fas fa-sign-in-alt"(click)="logout()"></i>-->
 </mat-toolbar>
 
 <router-outlet></router-outlet>

@@ -55,5 +55,15 @@ export class AddQuestionComponent implements OnInit {
         console.log(this.answers[1]);
     }
 
+    delete (index) {
+        if (this.type === 'mapping') {
+            this.answers[0].splice(index, 1);
+            this.answers[1].splice(index, 1);
+        } else {
+            this.answers.splice(index, 1);
+        }
+
+    }
+
 
 }

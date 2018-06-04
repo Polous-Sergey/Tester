@@ -1,2 +1,27 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "./app/main-admin/lectures-management/lectures-management.component";
+
+body {
+  margin: 0;
+}
+
+.bg {
+  background:url('./assets/maxresdefault.jpg') no-repeat;
+  -webkit-background-size:cover;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to bottom right, #8b8d8e, #8b8d8e);
+    opacity: .6;
+  }
+}
+
+button {
+  background: #002786 !important;
+  color: white !important;
+  margin: 0 5px !important;
+}

@@ -20,9 +20,11 @@ import {AddQuestionComponent} from './shared/modal/add-question/add-question.com
 import {DeleteComponent} from './shared/modal/delete/delete.component';
 import {DataProviderService} from './shared/services/data-provider.service';
 import {LecturesManagementComponent} from './main-admin/lectures-management/lectures-management.component';
+import {MatDialogModule} from '@angular/material';
 
 @NgModule({
     declarations: [
+        // ExampleDialogComponent,
         AppComponent,
         LoginComponent,
         MainAdminComponent,
@@ -37,7 +39,8 @@ import {LecturesManagementComponent} from './main-admin/lectures-management/lect
     entryComponents: [
         AddSectionComponent,
         AddQuestionComponent,
-        DeleteComponent
+        DeleteComponent,
+        // ExampleDialogComponent
     ],
     imports: [
         BrowserModule,
@@ -52,6 +55,7 @@ import {LecturesManagementComponent} from './main-admin/lectures-management/lect
         }),
         FroalaEditorModule.forRoot(),
         FroalaViewModule.forRoot(),
+        MatDialogModule
 
     ],
     providers: [

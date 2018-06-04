@@ -3,26 +3,60 @@
         <!--<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">-->
     <!--</mat-form-field>-->
 <!--</div>-->
+<div *ngIf="!adminCreation" style="text-align: end; margin: 10px 20px"><button mat-button (click)="createAdmin ()" style="background: #001041; color: white;">Create admin</button></div>
 
-<div style="padding: 10px 60px">
+<div fxLayout="row"
+     fxLayoutAlign="center center" style="margin: 20px 0" *ngIf="adminCreation">
+
+    <mat-card fxFlex="40%"> <mat-card-header>
+        <mat-card-title fxLayout="column"> <span style="color: red; margin: 2px"> {{error}} </span></mat-card-title>
+        <!--<mat-card-title fxLayout="column">{{error}}</mat-card-title>-->
+
+
+    </mat-card-header>
+        <mat-card-content fxLayout="column">
+            <mat-form-field>
+                <input matInput placeholder="Name" [(ngModel)]=user.name type="text">
+            </mat-form-field>
+
+            <mat-form-field >
+                <input matInput placeholder="Password" [(ngModel)]=user.password type="text">
+            </mat-form-field>
+
+        </mat-card-content>
+        <mat-card-actions fxLayoutAlign="space-between none" style="
+    padding: 7px 15px;">
+            <button mat-raised-button color="primary" (click)="create()">Create</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
+
+
+<div style="padding: 10px 60px" *ngIf="!adminCreation">
 <mat-card style="background-color: whitesmoke;">
     <mat-card-title  fxLayout="row"
                      fxLayoutAlign="center center"> <span fxFlex>Name</span>  <span fxFlex>Surname</span>
         <span fxFlex>Email</span><span fxFlex>Tests info</span></mat-card-title>
 
 </mat-card>
-<mat-card *ngFor="let user of users" >
-    <mat-card-title  fxLayout="row"
-                     fxLayoutAlign="center center"> <span fxFlex>{{user.name}}</span>  <span fxFlex>{{user.surname}}</span>
-        <span fxFlex>{{user.email}}</span> <span fxFlex> <span *ngFor="let test of user.tests" style="padding: 5px">
+    <div *ngFor="let user of users">
+        <mat-card  *ngIf="user.role === 1">
+
+            <mat-card-title  fxLayout="row"
+                             fxLayoutAlign="center center" > <span fxFlex>{{user.name}}</span>  <span fxFlex>{{user.surname}}</span>
+                <span fxFlex>{{user.email}}</span> <span fxFlex> <span *ngFor="let test of user.tests" style="padding: 5px">
              <span>{{test.name}}</span> - <span>{{test.mark}}</span> <br>
         </span></span></mat-card-title>
-    <!--<span>Tests information</span> <br>-->
-    <!--<mat-card-subtitle *ngFor="let test of user.tests" class="secondary-display">-->
+            <!--<span>Tests information</span> <br>-->
+            <!--<mat-card-subtitle *ngFor="let test of user.tests" class="secondary-display">-->
 
-        <!--<span>{{test.name}}</span> <span>{{test.mark}}</span>-->
-    <!--</mat-card-subtitle>-->
-</mat-card>
+            <!--<span>{{test.name}}</span> <span>{{test.mark}}</span>-->
+            <!--</mat-card-subtitle>-->
+
+
+        </mat-card>
+    </div>
+
 </div>
 
 <!--<div class="example-container mat-elevation-z8" *ngIf="users.length>0">-->

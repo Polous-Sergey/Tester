@@ -1,8 +1,11 @@
-<mat-toolbar>
+
+<mat-toolbar style="background: #001041; color: white">
     <span (click)="workingOnTest = false">
         Tester
     </span>
-    <mat-icon class="example-icon" (click)="logout()">verified_user</mat-icon>
+    <mat-icon class="example-icon" (click)="logout()"><i class="material-icons">
+        redo
+    </i></mat-icon>
 </mat-toolbar>
 
 <div fxLayout="row"
@@ -16,34 +19,6 @@
 
 
 <div fxLayout="column" *ngIf="!workingOnTest && !workingOnLecture">
-
-    <!--<div fxLayout="row"-->
-    <!--fxLayoutAlign="center center"-->
-    <!--*ngFor="let test of testsArr let index = index" style="margin-top: 10px">-->
-
-    <!--<mat-card fxFlex="80%"-->
-    <!--fxLayoutAlign="space-between center">-->
-
-    <!--<div fxLayout="row"-->
-    <!--fxFlex="100%"-->
-    <!--fxLayoutAlign="center center">-->
-
-    <!--<div fxFlex="10%" fxLayoutAlign="center center">-->
-    <!--<mat-card-subtitle>№{{index + 1}}</mat-card-subtitle>-->
-    <!--</div>-->
-
-    <!--<div fxFlex="90%" fxLayoutAlign="space-between center">-->
-    <!--<p>-->
-    <!--{{test.name}}-->
-    <!--</p>-->
-
-    <!--<div>-->
-    <!--<button mat-button (click)="startTest(index)"> Start</button>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</mat-card>-->
-    <!--</div>-->
 
     <div fxLayout="row"
          fxLayoutAlign="center center"
@@ -124,7 +99,7 @@
                                       *ngFor="let answer of question.answers let answerIndex = index"
                                       [value]="answerIndex">
                         {{answer.name}}
-                    </mat-radio-button>
+                    </mat-radio-button><br>
                 </mat-radio-group>
 
             </div>
@@ -138,7 +113,6 @@
                         {{answer.name}}
                     </mat-checkbox>
                 </div>
-
             </div>
 
             <div *ngIf="question.type === 'mapping'" fxLayout="column">

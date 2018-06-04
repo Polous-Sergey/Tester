@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     }
 
     login() {
-        if (this.user.name.trim() !== '' || this.user.password.trim() !== '') {
+        if (this.user.name.trim() !== '' && this.user.password.trim() !== '') {
             if (this.user.name === 'admin' && this.user.surname === 'admin') {
                 this.router.navigate(['/admin/user']);
             } else {
@@ -40,9 +40,9 @@ export class LoginComponent implements OnInit {
     }
 
     register() {
-        if (this.user.name.trim() !== '' ||
-            this.user.password.trim() !== '' ||
-            this.user.surname.trim() !== '' || this.user.email.trim() !== '') {
+        if (this.user.name.trim() !== '' &&
+            this.user.password.trim() !== '' &&
+            this.user.surname.trim() !== '' && this.user.email.trim() !== '') {
             this.data.users.push(this.user);
             this.data.curentUser = this.user;
             this.router.navigate(['/user']);

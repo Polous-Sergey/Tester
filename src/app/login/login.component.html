@@ -14,7 +14,7 @@
             <!--</mat-radio-group>-->
         <!--</div>-->
         <mat-card-header>
-            <mat-card-title fxLayout="column">{{type}} {{error}}</mat-card-title>
+            <mat-card-title fxLayout="column">{{type}} <span style="color: red; margin: 2px"> {{error}} </span></mat-card-title>
             <!--<mat-card-title fxLayout="column">{{error}}</mat-card-title>-->
 
 
@@ -37,7 +37,7 @@
     padding: 7px 15px;">
             <a href="javascript:void(0)"  (click)="type = 'Login'" *ngIf="type === 'Register'">Login >></a>
             <a href="javascript:void(0)"  (click)="type = 'Register'" *ngIf="type === 'Login'">Register >></a>
-            <button mat-raised-button color="primary" (click)="login()">Login</button>
+            <button mat-raised-button color="primary" (click)="type === 'Login' ? login(): register ()">{{type}}</button>
         </mat-card-actions>
     </mat-card>
 </div>

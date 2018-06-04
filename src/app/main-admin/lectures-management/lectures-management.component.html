@@ -7,7 +7,7 @@
         {{ lecture.name }}
       </mat-option>
     </mat-select>
-    <button mat-button (click)="addShit = true" *ngIf="!addShit">Add Lecture</button>
+    <button mat-button (click)="addShit = true" *ngIf="!addShit" style="background: #001041; color: white;">Add Lecture</button>
 
     <div *ngIf="addShit" fxFlex="40%"  style="justify-content: space-between;">
       <mat-form-field class="example-full-width" style="width: 100%;">
@@ -29,4 +29,3 @@
   </mat-toolbar>
 
 <div [froalaEditor] [(ngModel)]="selectedLecture.data" style="margin: 0 100px"></div>
-  <div [froalaView]="selectedLecture.data"></div>

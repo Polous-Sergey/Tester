@@ -1,5 +1,5 @@
 <div fxLayout="row" style="height: -webkit-fill-available"
-     fxLayoutAlign="center center">
+     fxLayoutAlign="center center" class="bg">
 
     <mat-card fxFlex="40%">
 
@@ -14,7 +14,7 @@
             <!--</mat-radio-group>-->
         <!--</div>-->
         <mat-card-header>
-            <mat-card-title fxLayout="column">{{type}} {{error}}</mat-card-title>
+            <mat-card-title fxLayout="column">{{type}} <span style="color: red; margin: 2px"> {{error}} </span></mat-card-title>
             <!--<mat-card-title fxLayout="column">{{error}}</mat-card-title>-->
 
 
@@ -35,9 +35,9 @@
         </mat-card-content>
         <mat-card-actions fxLayoutAlign="space-between none" style="
     padding: 7px 15px;">
-            <a href="javascript:void(0)"  (click)="type = 'Login'" *ngIf="type === 'Register'">Login >></a>
-            <a href="javascript:void(0)"  (click)="type = 'Register'" *ngIf="type === 'Login'">Register >></a>
-            <button mat-raised-button color="primary" (click)="login()">Login</button>
+            <a href="javascript:void(0)"  (click)="type = 'Login'; error=''" *ngIf="type === 'Register'">Login >></a>
+            <a href="javascript:void(0)"  (click)="type = 'Register'; error=''" *ngIf="type === 'Login'">Register >></a>
+            <button mat-raised-button color="primary" (click)="type === 'Login' ? login(): register ()">{{type}}</button>
         </mat-card-actions>
     </mat-card>
 </div>

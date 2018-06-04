@@ -9,6 +9,7 @@ export class DataProviderService {
     users = [
         {
             id: 101,
+            role: 1,
             name: 'first',
             surname: 'first',
             password: '1',
@@ -21,9 +22,24 @@ export class DataProviderService {
         {
             id: 102,
             name: 'first',
+            role: 1,
             surname: 'first',
             email: 'first@first.ua',
             password: '1',
+            tests: [{
+                name: 'first test',
+                mark: 10
+            }, {
+                name: 'first test',
+                mark: 10
+            }]
+        }, {
+            id: 102,
+            name: 'admin',
+            role: 2,
+            surname: 'first',
+            email: 'first@first.ua',
+            password: 'admin',
             tests: [{
                 name: 'first test',
                 mark: 10

@@ -1,4 +1,4 @@
-<ul class="list-group list-group-flush">
+<ul class="list-group list-group-flush" *ngIf="!adminCreation">
     <li class="list-group-item" style="background-color: #E3F2FD">
         <div class="row">
             <div class="col text-center">Name</div>
@@ -8,7 +8,8 @@
         </div>
 
     </li>
-    <li class="list-group-item" *ngFor="let user of users">
+    <span *ngFor="let user of users">
+        <li class="list-group-item" *ngIf="user.role == 1">
         <div class="row">
             <div class="col text-center">{{user.name}}</div>
             <div class="col text-center">{{user.surname}}</div>
@@ -21,5 +22,34 @@
             </div>
         </div>
     </li>
+    </span>
+
 </ul>
 
+<div *ngIf="!adminCreation" style="text-align: end; margin: 10px 20px"><button mat-button (click)="createAdmin ()" style="background: #001041; color: white;">Create admin</button></div>
+
+<div fxLayout="row"
+     fxLayoutAlign="center center" style="margin: 20px 0" *ngIf="adminCreation">
+
+    <mat-card fxFlex="40%"> <mat-card-header>
+        <mat-card-title fxLayout="column"> <span style="color: red; margin: 2px"> {{error}} </span></mat-card-title>
+        <!--<mat-card-title fxLayout="column">{{error}}</mat-card-title>-->
+
+
+    </mat-card-header>
+        <mat-card-content fxLayout="column">
+            <mat-form-field>
+                <input matInput placeholder="Name" [(ngModel)]=user.name type="text">
+            </mat-form-field>
+
+            <mat-form-field >
+                <input matInput placeholder="Password" [(ngModel)]=user.password type="text">
+            </mat-form-field>
+
+        </mat-card-content>
+        <mat-card-actions fxLayoutAlign="space-between none" style="
+    padding: 7px 15px;">
+            <button mat-raised-button color="primary" (click)="create()">Create</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

@@ -103,4 +103,9 @@ export class SurveyListComponent implements OnInit {
 
     }
 
+    delete (index) {
+        console.log('sdasd')
+        this.activeSection.questions.splice(index, 1);
+    }
+
 }

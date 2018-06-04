@@ -7,14 +7,15 @@
         li {
             margin-left: 20px;
             a {
-                color: #000;
+                color: #afacac;
                 text-decoration: none;
             }
         }
     }
 
     .active {
-        background-color: #d8d8d8;
+        background-color: #122b75;
+        color: white !important;
         padding: 20px;
     }
 }

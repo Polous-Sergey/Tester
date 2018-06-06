@@ -4,7 +4,11 @@
     <!--</mat-form-field>-->
 <!--</div>-->
 <div *ngIf="!adminCreation" style="text-align: end; margin: 10px 20px"><button mat-button (click)="createAdmin ()" style="background: #001041; color: white;">Create admin</button></div>
-
+<p style="
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+">Cтворення нового користувача </p>
 <div fxLayout="row"
      fxLayoutAlign="center center" style="margin: 20px 0" *ngIf="adminCreation">
 
@@ -22,6 +26,19 @@
             <mat-form-field >
                 <input matInput placeholder="Password" [(ngModel)]=user.password type="text">
             </mat-form-field>
+
+            <mat-form-field>
+                <mat-select placeholder="Role">
+                    <mat-option  value="1">
+                        Студент
+                    </mat-option> <mat-option  value="1">
+                    Викладач
+                    </mat-option> <mat-option  value="1">
+                    Адміністратор
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
 
         </mat-card-content>
         <mat-card-actions fxLayoutAlign="space-between none" style="

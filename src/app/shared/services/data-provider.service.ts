@@ -108,7 +108,7 @@ export class DataProviderService {
 
     lectures = [
         {
-            name: 'lecture 1',
+            name: 'Лекція 1',
             data: `<h1>asdsdsadsds</h1><h3></h3>
 <p><b>Angular</b> (commonly referred to as "<b>Angular 2+</b>" or "<b>Angular v2 and above</b>")<sup id="cite_ref-3" class="reference"><a href="#cite_note-3">[3]</a></sup><sup id="cite_ref-4" class="reference"><a href="#cite_note-4">[4]</a></sup> is a <a href="/wiki/TypeScript" title="TypeScript">TypeScript</a>-based <a href="/wiki/Open-source_software" title="Open-source software">open-source</a> front-end <a href="/wiki/Web_framework" title="Web framework">web application platform</a> led by the Angular Team at <a href="/wiki/Google" title="Google">Google</a> and by a community of individuals and corporations. Angular is a complete rewrite from the same team that built <a href="/wiki/AngularJS" title="AngularJS">AngularJS</a>.</p>
 <p><b>Angular</b> (commonly referred to as "<b>Angular 2+</b>" or "<b>Angular v2 and above</b>")<sup id="cite_ref-3" class="reference"><a href="#cite_note-3">[3]</a></sup><sup id="cite_ref-4" class="reference"><a href="#cite_note-4">[4]</a></sup> is a <a href="/wiki/TypeScript" title="TypeScript">TypeScript</a>-based <a href="/wiki/Open-source_software" title="Open-source software">open-source</a> front-end <a href="/wiki/Web_framework" title="Web framework">web application platform</a> led by the Angular Team at <a href="/wiki/Google" title="Google">Google</a> and by a community of individuals and corporations. Angular is a complete rewrite from the same team that built <a href="/wiki/AngularJS" title="AngularJS">AngularJS</a>.</p>
@@ -316,12 +316,12 @@ export class DataProviderService {
             ]
         },
         {
-            name: 'lecture 2',
+            name: 'Лекція 2',
             data: null,
             questionarie: []
         },
         {
-            name: 'lecture 3',
+            name: 'Лекція 3',
             data: null,
             questionarie: []
         },

@@ -5,6 +5,7 @@ import {AddSectionComponent} from '../../shared/modal/add-section/add-section.co
 import {AddQuestionComponent} from '../../shared/modal/add-question/add-question.component';
 import {Question} from '../../shared/model/question';
 import {DataProviderService} from '../../shared/services/data-provider.service';
+import {AddTestComponent} from '../../shared/modal/add-test/add-test.component';
 
 @Component({
     selector: 'app-survey-list',
@@ -17,6 +18,7 @@ export class SurveyListComponent implements OnInit {
     selectName;
     activeSection: Section;
     activeSectionIndex = 0;
+    isEditTest = false;
 
 
     constructor(private dialog: MatDialog,
@@ -24,6 +26,7 @@ export class SurveyListComponent implements OnInit {
     }
 
     selectTest(questions) {
+        this.isEditTest = true;
         this.items = questions;
         this.activeSection = this.items[0];
     }
@@ -36,6 +39,7 @@ export class SurveyListComponent implements OnInit {
     }
 
     addQuestionarie(name) {
+        this.isEditTest = false;
         this.questionaries.push({
             name: name,
             sections: []
@@ -46,9 +50,18 @@ export class SurveyListComponent implements OnInit {
         this.activeSection = this.items[0];
     }
 
+    deleteQuestionarie(index) {
+        this.isEditTest = false;
+        this.questionaries.splice(index);
+
+        this.items = this.questionaries[(this.questionaries.length - 1)].sections;
+        this.selectName = this.questionaries[(this.questionaries.length - 1)].name;
+        this.activeSection = this.items[0];
+    }
+
     openAddSectionDialog(): void {
         const confiq: any = {
-            width: '350px',
+            width: '400px',
             data: {}
         };
         const dialogRef = this.dialog.open(AddSectionComponent, confiq);
@@ -94,17 +107,30 @@ export class SurveyListComponent implements OnInit {
         });
     }
 
+    openAddTestDialog(question?: Question, index?: number): void {
+        const confiq: any = {
+            width: '400px',
+        };
+        if (question) {
+            confiq.data = question;
+        }
+
+        const dialogRef = this.dialog.open(AddTestComponent, confiq);
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log(result);
+            if (result) {
+                this.addQuestionarie(result);
+            }
+        });
+    }
+
     setActiveSection(item: Section, index: number) {
         this.activeSection = item;
         this.activeSectionIndex = index;
     }
 
-    addNewSection() {
-
-    }
-
     delete (index) {
-        console.log('sdasd')
         this.activeSection.questions.splice(index, 1);
     }
 

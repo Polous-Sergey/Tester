@@ -36,7 +36,7 @@ export class DataProviderService {
         }, {
             id: 102,
             name: 'admin',
-            role: 2,
+            role: 3,
             surname: 'first',
             email: 'first@first.ua',
             password: 'admin',

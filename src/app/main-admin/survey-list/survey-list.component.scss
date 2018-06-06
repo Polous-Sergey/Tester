@@ -2,6 +2,11 @@
   background-color: #f9f9f9;
   overflow: hidden;
   height: 100%;
+  position: fixed;
+  top: 56px;
+  bottom: 0;
+  right: 0;
+  left: 0;
 
   .side-nav {
     background-color: #f9f9f9;
@@ -15,6 +20,7 @@
   .not-active-item {
     border-right: solid 2px #f9f9f9;
   }
+
   .active-item {
     border-right: solid 2px #001041;
   }

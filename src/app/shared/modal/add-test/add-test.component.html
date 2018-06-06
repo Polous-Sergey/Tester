@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Add New Test</h1>
+<div mat-dialog-content fxLayoutAlign="center none">
+  <p>Type name of new section</p>
+  <mat-form-field style="text-align: center">
+    <input matInput [(ngModel)]="name">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions fxLayoutAlign="space-between none">
+  <button mat-button (click)="closeClick()">Cancel</button>
+  <button mat-button (click)="submitClick()">Submit</button>
+</div>

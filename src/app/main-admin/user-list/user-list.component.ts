@@ -14,6 +14,9 @@ export class UserListComponent implements OnInit {
     users = [];
     adminCreation;
     error;
+    admin2 = {
+        role: 2
+    };
 
     user = {
         name: '',
@@ -37,7 +40,7 @@ export class UserListComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
 
-
+        this.admin2 = this.data.curentUser;
     }
 
     applyFilter(filterValue: string) {

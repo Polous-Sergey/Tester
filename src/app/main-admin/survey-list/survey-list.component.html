@@ -1,4 +1,4 @@
-<mat-sidenav-container class="surveyBlock">
+<mat-sidenav-container class="surveyBlock" *ngIf="isEditTest">
     <mat-sidenav #sidenav mode="side" class="p-3">
         <div class="side-nav-heder">
             <h4>Sections</h4>
@@ -10,7 +10,7 @@
 
         <div class="block-container">
             <div *ngFor="let item of items let index = index" (click)="setActiveSection(item, index)"
-                 class="not-active-item">
+                 [ngClass]="{'not-active-item': index === activeSectionIndex, 'active-item': index === activeSectionIndex}">
                 <div class="block-item">
                     <div>
                         {{item.name}}
@@ -23,31 +23,31 @@
 
     <mat-sidenav-content>
 
-        <mat-toolbar fxLayout="row"
-                     fxLayoutAlign="center center">
+        <!--<mat-toolbar fxLayout="row"-->
+                     <!--fxLayoutAlign="center center">-->
 
-                <mat-select [(value)]="selectName" *ngIf="!addShit">
-                    <mat-option *ngFor="let test of this.questionaries" [value]="test.name"  (click)="selectTest(test.sections)" >
-                        {{ test.name }}
-                    </mat-option>
-                </mat-select>
-            <button mat-button (click)="addShit = true" *ngIf="!addShit" style="background: #001041; color: white;">Add Questionarie</button>
+                <!--<mat-select [(value)]="selectName" *ngIf="!addShit">-->
+                    <!--<mat-option *ngFor="let test of this.questionaries" [value]="test.name"  (click)="selectTest(test.sections)" >-->
+                        <!--{{ test.name }}-->
+                    <!--</mat-option>-->
+                <!--</mat-select>-->
+            <!--<button mat-button (click)="addShit = true" *ngIf="!addShit">Add Questionarie</button>-->
 
-            <div *ngIf="addShit" fxFlex="40%"  style="justify-content: space-between;">
-                <mat-form-field class="example-full-width" style="width: 100%;">
-                    <input type="text" matInput placeholder="Questionarie name" #qName>
-                </mat-form-field>
+            <!--<div *ngIf="addShit" fxFlex="40%"  style="justify-content: space-between;">-->
+                <!--<mat-form-field class="example-full-width" style="width: 100%;">-->
+                    <!--<input type="text" matInput placeholder="Questionarie name" #qName>-->
+                <!--</mat-form-field>-->
 
-                <button mat-button (click)="addShit = false; addQuestionarie(qName.value);sidenav.toggle()">Add Questionarie</button>
-                <button mat-button (click)="addShit = false; ">Quit</button>
-            </div>
-        </mat-toolbar>
-
-
+                <!--<button mat-button (click)="addShit = false; addQuestionarie(qName.value);sidenav.toggle()">Add Questionarie</button>-->
+                <!--<button mat-button (click)="addShit = false; ">Quit</button>-->
+            <!--</div>-->
+        <!--</mat-toolbar>-->
 
 
-        <div fxLayout="row"
-             fxLayoutWrap fxLayoutGap="0.5%"
+
+
+        <div fxLayout="row" class="mt-3 mb-3"
+             fxLayoutWrap
              fxLayoutAlign=" center"  >
 
             <div fxFlex="10%" fxLayoutAlign="center none">
@@ -61,7 +61,7 @@
 
                 <div>
                     <button mat-button (click)="openAddQuestionDialog()">Add Question</button>
-                    <button mat-button>Edit</button>
+                    <button mat-button (click)="isEditTest = false">Back</button>
                 </div>
 
             </div>
@@ -74,6 +74,7 @@
         <div fxLayout="column" *ngIf="activeSection">
 
             <div fxLayout="row"
+                 class="mb-3"
                  fxLayoutAlign="center center"
                  *ngFor="let question of activeSection.questions let index = index">
 
@@ -103,40 +104,33 @@
                                     <mat-icon aria-label="Delete" (click)="delete(index)">delete</mat-icon>
                                 </button>
                             </div>
-
                         </div>
-
-
                     </div>
-
                 </mat-card>
-
             </div>
-
-
         </div>
-        <!--<mat-card>Simple card</mat-card>-->
-
-        <!--<div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%"-->
-        <!--fxLayoutAlign="center">-->
-        <!--<div fxFlex="20%">-->
-        <!--<img mat-card-image class="img"-->
-        <!--src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/8V46UZCS0V.jpg">-->
-        <!--</div>-->
-        <!--<div fxFlex="20%">-->
-        <!--<img mat-card-image class="img"-->
-        <!--src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/LTLE4QGRVQ.jpg">-->
-        <!--</div>-->
-        <!--<div fxFlex="20%">-->
-        <!--<img mat-card-image class="img"-->
-        <!--src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/R926LU1YEA.jpg">-->
-        <!--</div>-->
-        <!--<div fxFlex="20%">-->
-        <!--<img mat-card-image class="img"-->
-        <!--src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/U9PP3KXXY2.jpg">-->
-        <!--</div>-->
-        <!--</div>-->
-
-
     </mat-sidenav-content>
 </mat-sidenav-container>
+
+
+<div style="flex-flow: row wrap; display: flex" *ngIf="!isEditTest">
+    <mat-card fxFlex="23.31" class="m-3" *ngFor="let test of this.questionaries let index = index">
+        <mat-card-header>
+            <mat-card-title>{{ test.name }}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGdag9JtyIzYkgM3Hz2rjQkol2mHoBy-rSZ1uL-2u2VuBeewz16Q" alt="Test">
+        <mat-card-actions class="text-right">
+            <button mat-button color="warn" (click)="deleteQuestionarie(index)">Delete</button>
+            <button mat-button color="primary" (click)="selectTest(test.sections)">Edit</button>
+        </mat-card-actions>
+    </mat-card>
+
+    <button mat-fab style="position: absolute;
+    bottom: 30px;
+    right: 30px;"
+    color="primary">
+        <mat-icon (click)="openAddTestDialog()" >add</mat-icon>
+    </button>
+
+</div>
+

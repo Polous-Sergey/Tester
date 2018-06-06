@@ -24,6 +24,7 @@ import {AddQuestionComponent} from './shared/modal/add-question/add-question.com
 import {DeleteComponent} from './shared/modal/delete/delete.component';
 import {DataProviderService} from './shared/services/data-provider.service';
 import {LecturesManagementComponent} from './main-admin/lectures-management/lectures-management.component';
+import { AddTestComponent } from './shared/modal/add-test/add-test.component';
 
 @NgModule({
     declarations: [
@@ -37,11 +38,13 @@ import {LecturesManagementComponent} from './main-admin/lectures-management/lect
         AddQuestionComponent,
         DeleteComponent,
         LecturesManagementComponent,
+        AddTestComponent,
     ],
     entryComponents: [
         AddSectionComponent,
         AddQuestionComponent,
-        DeleteComponent
+        DeleteComponent,
+        AddTestComponent
     ],
     imports: [
         BrowserModule,
